@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="800pt" height="800pt" viewBox="0 0 800 800">
+<g enable-background="new">
+<clipPath id="cp0">
+<path transform="matrix(1,0,0,-1,0,800)" d="M 400 0 C 620.9139 0 800 179.0861 800 400 C 800 620.9139 620.9139 800 400 800 C 179.0861 800 0 620.9139 0 400 C 0 179.0861 179.0861 0 400 0 Z " fill-rule="evenodd"/>
+</clipPath>
+<g clip-path="url(#cp0)">
+<clipPath id="cp1">
+<path transform="matrix(1,0,0,-1,0,800)" d="M 0 0 L 800 0 L 800 800 L 0 800 Z "/>
+</clipPath>
+<g clip-path="url(#cp1)">
+<path transform="matrix(1,0,0,-1,0,800)" d="M -10 810 L 810 810 L 810 -10 L -10 -10 Z " fill="#171717"/>
+</g>
+</g>
+<clipPath id="cp2">
+<path transform="matrix(1,0,0,-1,0,800)" d="M 60 60 L 760 60 L 760 740 L 60 740 Z "/>
+</clipPath>
+<g clip-path="url(#cp2)">
+<text fill="#bc6ff1" xml:space="preserve" transform="matrix(2 0 0 2 60 60)" font-size="360" font-family="Silom"><tspan y="305" x="51.72571">D</tspan></text>
+</g>
+</g>
+</svg>
