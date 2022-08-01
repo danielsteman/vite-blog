@@ -32,7 +32,6 @@ const App = () => (
       </Button>
     </Box>
   </PageBase>
-
 );
 
 export default App;
