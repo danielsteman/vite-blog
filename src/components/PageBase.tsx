@@ -1,15 +1,16 @@
 import React from 'react';
 import {
   Box,
-  Button,
   Flex,
   Spacer,
   Center,
   ChakraProvider,
 } from '@chakra-ui/react';
+import { FaGithub, FaStackOverflow, FaLinkedin } from 'react-icons/fa';
 import ColorModeSwitcher from './ColorModeSwitcher';
 import Logo from './Logo';
 import customTheme from '../themes/theme';
+import NavigationButton from './NavigationButton';
 
 interface Props {
   children: React.ReactNode;
@@ -17,7 +18,7 @@ interface Props {
 
 const PageBase: React.FC<Props> = ({ children }) => (
   <ChakraProvider theme={customTheme}>
-    <Box textAlign="left" fontSize="l" py={4} px={8}>
+    <Box textAlign="left" fontSize="l">
       <Flex>
         <Logo
           h="8vmin"
@@ -25,18 +26,9 @@ const PageBase: React.FC<Props> = ({ children }) => (
         />
         <Spacer />
         <Center>
-          <Button mr={4} bg="transparent">
-            Projects
-          </Button>
-          <Button mr={4} bg="transparent">
-            Experience
-          </Button>
-          <Button mr={4} bg="transparent">
-            Blog
-          </Button>
-          <Button mr={4} bg="transparent">
-            Login
-          </Button>
+          <NavigationButton url="www.google.com" icon={FaGithub} />
+          <NavigationButton url="www.google.com" icon={FaStackOverflow} />
+          <NavigationButton url="www.google.com" icon={FaLinkedin} />
           <ColorModeSwitcher mr={4} />
         </Center>
       </Flex>
