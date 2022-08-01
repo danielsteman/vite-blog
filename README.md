@@ -1,1 +1,1 @@
-Not much going on here.
+A Vite + React TS project scaffolded with `npm create vite`. 
