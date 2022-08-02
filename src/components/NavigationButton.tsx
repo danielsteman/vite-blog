@@ -3,8 +3,8 @@ import { Button } from '@chakra-ui/react';
 import { IconType } from 'react-icons';
 
 interface Props {
-  icon: IconType,
-  url: string,
+  icon: IconType
+  url: string
 }
 
 const NavigationButton: React.FC<Props> = ({ icon, url }) => (
