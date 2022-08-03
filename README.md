@@ -1,1 +1,1 @@
-A Vite + React TS project scaffolded with `npm create vite`. 
+A Vite + React TS blog project scaffolded with `npm create vite`. The project makes use of the [Chakra UI](https://chakra-ui.com/) UI library to get darkmode 🌙 out of the box. 
