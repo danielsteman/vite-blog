@@ -9,9 +9,7 @@ ReactDOM.createRoot(rootElement!).render(
   <React.StrictMode>
     <ColorModeScript />
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />} />
-      </Routes>
+      <App />
     </BrowserRouter>
   </React.StrictMode>,
 );

@@ -1,16 +1,17 @@
 import React from 'react';
 import { Box } from '@chakra-ui/react';
 import {
-  MdInfo, MdAutoGraph, MdConstruction, MdContactPage,
+  MdInfo, MdAutoGraph, MdConstruction, MdContactPage, MdEdit,
 } from 'react-icons/md';
 import SideMenuButton from './SideMenuButton';
 
 const SideMenu = () => (
   <Box>
-    <SideMenuButton icon={MdInfo} text="About" url="" />
-    <SideMenuButton icon={MdAutoGraph} text="Experience" url="" />
-    <SideMenuButton icon={MdConstruction} text="Work" url="" />
-    <SideMenuButton icon={MdContactPage} text="Contact" url="" />
+    <SideMenuButton icon={MdEdit} text="Blog" url="blog" />
+    <SideMenuButton icon={MdInfo} text="About" url="about" />
+    <SideMenuButton icon={MdAutoGraph} text="Experience" url="experience" />
+    <SideMenuButton icon={MdConstruction} text="Work" url="work" />
+    <SideMenuButton icon={MdContactPage} text="Contact" url="contact" />
   </Box>
 );
 
