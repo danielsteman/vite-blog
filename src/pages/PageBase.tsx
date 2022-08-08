@@ -40,7 +40,7 @@ const PageBase: React.FC<Props> = ({ children }) => (
       <GridItem colSpan={1} py={8}>
         <SideMenu />
       </GridItem>
-      <GridItem colSpan={3} p={16}>
+      <GridItem colSpan={3} py={16} pr={16}>
         {children}
       </GridItem>
     </Grid>
