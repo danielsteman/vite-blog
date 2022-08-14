@@ -22,6 +22,7 @@ export const getRepos = async () => {
       const languages = await getRepoLanguage(repo.name);
       return (
         {
+          id: repo.id,
           name: repo.name,
           description: repo.description,
           languages,
