@@ -6,7 +6,7 @@ export const getRepoLanguage = async (repo: string) => {
   const response = await request('GET /repos/danielsteman/{repo}/languages', {
     repo,
     headers: {
-      authorization: process.env.PAT,
+      authorization: `token ${process.env.PAT}`,
     },
   }).then((resp) => resp.data);
   return response;
@@ -16,15 +16,23 @@ export const getRepos = async () => {
   // example: await getRepos;
   const response = await request('GET /users/danielsteman/repos', {
     headers: {
-      authorization: process.env.PAT,
+      authorization: `token ${process.env.PAT}`,
     },
   }).then((resp) => resp.data.map(
-    (repo: any) => (
-      {
-        name: repo.name,
-        description: repo.description,
-      }
-    ),
+    async (repo: any) => {
+      const languages = await getRepoLanguage(repo.name);
+      console.log(languages);
+      return (
+        {
+          name: repo.name,
+          description: repo.description,
+          languages,
+        }
+      );
+    },
   ));
   return response;
 };
+
+const x = await getRepos();
+console.log(x);
