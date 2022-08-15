@@ -8,7 +8,9 @@ import {
   Grid,
   GridItem,
 } from '@chakra-ui/react';
-import { FaGithub, FaStackOverflow, FaLinkedin } from 'react-icons/fa';
+import {
+  FaGithub, FaStackOverflow, FaLinkedin, FaLastfmSquare,
+} from 'react-icons/fa';
 import ColorModeSwitcher from '../components/ColorModeSwitcher';
 import Logo from '../components/Logo';
 import customTheme from '../themes/theme';
@@ -29,9 +31,10 @@ const PageBase: React.FC<Props> = ({ children }) => (
         />
         <Spacer />
         <Center>
-          <NavigationButton url="www.github.com/danielsteman" icon={FaGithub} />
-          <NavigationButton url="www.stackoverflow.com/users/11383969/dsteman" icon={FaStackOverflow} />
-          <NavigationButton url="www.google.com" icon={FaLinkedin} />
+          <NavigationButton url="https://www.github.com/danielsteman" icon={FaGithub} />
+          <NavigationButton url="https://www.stackoverflow.com/users/11383969/dsteman" icon={FaStackOverflow} />
+          <NavigationButton url="https://www.linkedin.com/in/danielsteman/" icon={FaLinkedin} />
+          <NavigationButton url="https://www.last.fm/user/daniel-steman" icon={FaLastfmSquare} />
           <ColorModeSwitcher mr={4} />
         </Center>
       </Flex>

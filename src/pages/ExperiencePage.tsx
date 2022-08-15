@@ -65,7 +65,7 @@ const ExperiencePage = () => (
       <Text>
         Finance & Technology (honours programme). Thesis:
         {' '}
-        <Link href="https://github.com/danielsteman/thesis-msc-finance">Backtesting a high frequency cointegration-based trading strategy</Link>
+        <Link href="https://github.com/danielsteman/thesis-msc-finance"><i>Backtesting a high frequency cointegration-based trading strategy</i></Link>
         {' '}
         written in Python (grade: 8).
       </Text>
