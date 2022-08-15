@@ -4,7 +4,7 @@ import PageTitle from '../components/PageTitle';
 import PageBase from './PageBase';
 
 const AboutPage = () => {
-  const title = 'About';
+  const title = "Hi! I'm Daniel 👋";
   return (
     <PageBase>
       <PageTitle title={title} />

@@ -17,7 +17,7 @@ export const getRepos = async () => {
     headers: {
       authorization: `token ${import.meta.env.VITE_PAT}`,
     },
-  }).then((resp) => resp.data.map(
+  }).then((resp) => resp.data.filter((repo: any) => repo.fork === false).map(
     async (repo: any) => {
       const languages = await getRepoLanguage(repo.name);
       return (
