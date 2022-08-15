@@ -25,9 +25,30 @@ const ExperiencePage = () => (
           <ExternalLinkIcon mx="2px" />
         </HStack>
       </Link>
-      <Heading size="sm" fontWeight={700} py={2}>May 2022 - Present</Heading>
+      <Heading size="sm" fontWeight={700} py={2}>
+        May 2022 - Present
+      </Heading>
       <Text>
         Scaling data science by designing, testing and deploying containerized Python code on Azure-managed Kubernetes. The stack includes, but is not limited to, infrastructure as code (Terraform), CI/CD (AzDevops), orchestration (Airflow), deployment (Helm), API development (FastAPI), MLops, parallelization (Dask, Spark).
+      </Text>
+    </Box>
+    <Box py={4} mb={4}>
+      <Heading size="lg" fontWeight={400}>
+        IT Trainee
+      </Heading>
+      <Link href="https://www.asr.nl/" isExternal w="fit-content">
+        <HStack>
+          <Heading size="md" fontWeight={700} py={2}>
+            a.s.r.
+          </Heading>
+          <ExternalLinkIcon mx="2px" />
+        </HStack>
+      </Link>
+      <Heading size="sm" fontWeight={700} py={2}>
+        Jan 2021 - May 2022
+      </Heading>
+      <Text>
+        Three rotations in the fields of Infrastructure & Cloud, Data Science and Software Development. I became acquainted with the backend and frontend of asr.nl.
       </Text>
     </Box>
     <Box py={4}>
@@ -42,9 +63,11 @@ const ExperiencePage = () => (
           <ExternalLinkIcon mx="2px" />
         </HStack>
       </Link>
-      <Heading size="sm" fontWeight={700} py={2}>May 2022 - Present</Heading>
+      <Heading size="sm" fontWeight={700} py={2}>
+        Feb 2017 - Dec 2020
+      </Heading>
       <Text>
-        Scaling data During my studies I continued to work at Virtuagym on a part-time basis. I automated business processes within the finance department through scripting in VBA and Python, while contributing to the integration of a new payment provider (Stripe).
+        During my studies I continued to work at Virtuagym on a part-time basis. I automated business processes within the finance department through scripting in VBA and Python, while contributing to the integration of a new payment provider (Stripe).
       </Text>
     </Box>
     <PageTitle title="Educational" />
