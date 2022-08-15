@@ -30,7 +30,7 @@ const WorkPage = () => {
         {' '}
         {end - start}
         {' '}
-        years I have been working on side projects, primarily to keep learning new languages and frameworks that have caught my interest.
+        years I have been working on side projects, primarily to keep learning and experimenting with new languages and frameworks that have caught my interest.
         These projects are a mix of full-stack web applications, hardware projects, data analysis and home automation projects.
         This page consumes the
         {' '}
