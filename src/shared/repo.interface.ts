@@ -4,3 +4,10 @@ export interface IRepo {
   description: string,
   languages: [string]
 }
+
+export interface IBlog {
+  id: number
+  title: string
+  date: string
+  text: string
+}

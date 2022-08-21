@@ -3,9 +3,9 @@ import {
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import PageTitle from '../components/PageTitle';
-import PageBase from './PageBase';
+import Base from './Base';
 
-const ContactPage = () => {
+const Contact = () => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
 
@@ -24,7 +24,7 @@ const ContactPage = () => {
   };
 
   return (
-    <PageBase>
+    <Base>
       <PageTitle title="Contact" />
       <form onSubmit={handleSubmit}>
         <FormControl>
@@ -35,8 +35,8 @@ const ContactPage = () => {
         </FormControl>
         <Button type="submit" mt={2}>Send</Button>
       </form>
-    </PageBase>
+    </Base>
   );
 };
 
-export default ContactPage;
+export default Contact;

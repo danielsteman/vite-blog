@@ -3,14 +3,12 @@ import {
   Box, Button, Heading, Text, useColorModeValue,
 } from '@chakra-ui/react';
 import { TiArrowRightThick } from 'react-icons/ti';
+import { Link } from 'react-router-dom';
+import { IBlog } from '../shared/repo.interface';
 
-interface Props {
-  title: string
-  date: string
-  text: string
-}
-
-const BlogPost: React.FC<Props> = ({ title, date, text }) => {
+const BlogPreview: React.FC<IBlog> = ({
+  id, title, date, text,
+}) => {
   const bg = useColorModeValue('lightgrey', 'darkgrey');
   return (
     <Box>
@@ -23,15 +21,17 @@ const BlogPost: React.FC<Props> = ({ title, date, text }) => {
       <Text>
         {text}
       </Text>
-      <Button mt={8} py={1}>
-        <Text mr={1}>
-          Read more
-        </Text>
-        <TiArrowRightThick size={24} />
-      </Button>
+      <Link to={`/blog/${id}`}>
+        <Button mt={8} py={1}>
+          <Text mr={1}>
+            Read more
+          </Text>
+          <TiArrowRightThick size={24} />
+        </Button>
+      </Link>
       <Box h={0.5} width="80%" bg={bg} my={20} />
     </Box>
   );
 };
 
-export default BlogPost;
+export default BlogPreview;

@@ -22,7 +22,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-const PageBase: React.FC<Props> = ({ children }) => (
+const Base: React.FC<Props> = ({ children }) => (
   <ChakraProvider theme={customTheme}>
     <Box textAlign="left" fontSize="l">
       <Flex>
@@ -53,4 +53,4 @@ const PageBase: React.FC<Props> = ({ children }) => (
   </ChakraProvider>
 );
 
-export default PageBase;
+export default Base;

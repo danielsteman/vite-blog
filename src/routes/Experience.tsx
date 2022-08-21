@@ -8,10 +8,10 @@ import {
 } from '@chakra-ui/react';
 import { ExternalLinkIcon } from '@chakra-ui/icons';
 import PageTitle from '../components/PageTitle';
-import PageBase from './PageBase';
+import Base from './Base';
 
-const ExperiencePage = () => (
-  <PageBase>
+const Experience = () => (
+  <Base>
     <PageTitle title="Professional" />
     <Box py={4} mb={4}>
       <Heading size="lg" fontWeight={400}>
@@ -111,7 +111,7 @@ const ExperiencePage = () => (
         A four-year international business programme with one semester abroad in Seoul, South Korea.
       </Text>
     </Box>
-  </PageBase>
+  </Base>
 );
 
-export default ExperiencePage;
+export default Experience;

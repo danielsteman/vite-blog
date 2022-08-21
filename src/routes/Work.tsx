@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { Link, Text } from '@chakra-ui/react';
 import { getRepos } from '../api/githubManager';
 import PageTitle from '../components/PageTitle';
-import PageBase from './PageBase';
+import Base from './Base';
 import WorkItem from '../components/WorkItem';
 import { IRepo } from '../shared/repo.interface';
 
 interface IRepos extends Array<IRepo> { }
 
-const WorkPage = () => {
+const Work = () => {
   const title = 'Work';
 
   const [repos, setRepos] = useState<IRepos | null>([]);
@@ -23,7 +23,7 @@ const WorkPage = () => {
   }, []);
 
   return (
-    <PageBase>
+    <Base>
       <PageTitle title={title} />
       <Text>
         Over the last
@@ -41,8 +41,8 @@ const WorkPage = () => {
       {repos!.map((repo: IRepo) => (
         <WorkItem repo={repo} key={repo.id} />
       ))}
-    </PageBase>
+    </Base>
   );
 };
 
-export default WorkPage;
+export default Work;
