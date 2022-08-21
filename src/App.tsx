@@ -15,6 +15,7 @@ const App = () => (
     <Route path="experience" element={<ExperiencePage />} />
     <Route path="work" element={<WorkPage />} />
     <Route path="contact" element={<ContactPage />} />
+    <Route path="*" element={<div>Nothing is going on here...</div>} />
   </Routes>
 );
 

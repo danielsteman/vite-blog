@@ -11,6 +11,7 @@ import {
 import {
   FaGithub, FaStackOverflow, FaLinkedin, FaLastfmSquare,
 } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import ColorModeSwitcher from '../components/ColorModeSwitcher';
 import Logo from '../components/Logo';
 import customTheme from '../themes/theme';
@@ -25,10 +26,12 @@ const PageBase: React.FC<Props> = ({ children }) => (
   <ChakraProvider theme={customTheme}>
     <Box textAlign="left" fontSize="l">
       <Flex>
-        <Logo
-          h="8vmin"
-          pointerEvents="none"
-        />
+        <Link to="/">
+          <Logo
+            h="8vmin"
+            pointerEvents="none"
+          />
+        </Link>
         <Spacer />
         <Center>
           <NavigationButton url="https://www.github.com/danielsteman" icon={FaGithub} />
