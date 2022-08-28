@@ -1,17 +1,29 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import ReactMarkdown from 'react-markdown';
 import PageTitle from '../components/PageTitle';
 import Base from './Base';
-import { ReactComponent } from '../content/blog1.md';
 
 const BlogPost = () => {
-  const params = useParams();
+  const [text, setText] = useState('');
+
+  useEffect(() => {
+    fetch('../content/blog1.md')
+      .then((res) => res.text())
+      .then((res) => setText(res));
+  }, []);
+
+  const components = {
+    // eslint-disable-next-line react/no-unstable-nested-components, react/prop-types
+    h1: ({ ...props }) => <PageTitle>{props.children}</PageTitle>,
+  };
+
   return (
     <Base>
-      <PageTitle title={`title of blog ${params.blogId}`} />
-      <ReactComponent />
+      <ReactMarkdown components={components}>
+        {text}
+      </ReactMarkdown>
     </Base>
   );
 };
-// eslint-disable-next-line implicit-arrow-linebreak
+
 export default BlogPost;
