@@ -10,7 +10,6 @@ interface Props {
 const NavigationButton: React.FC<Props> = ({ icon, url }) => (
   <Button
     bg="transparent"
-    mr={2}
     px={2}
     onClick={(e) => {
       e.preventDefault();
