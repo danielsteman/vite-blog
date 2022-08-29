@@ -16,6 +16,7 @@ const SideMenu = () => {
       <Menu>
         {isMobile ? (
           <MenuButton
+            w={1} // workaround to fix width
             as={IconButton}
             icon={<HamburgerIcon />}
             variant="outline"
