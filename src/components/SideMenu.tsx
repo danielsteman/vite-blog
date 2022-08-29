@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  Flex, IconButton, Menu, MenuButton, useMediaQuery,
+  Flex, IconButton, Menu, MenuButton, MenuItem, MenuList, useMediaQuery,
 } from '@chakra-ui/react';
 import {
   MdInfo, MdAutoGraph, MdConstruction, MdContactPage, MdEdit,
@@ -15,24 +15,32 @@ const SideMenu = () => {
     <Flex flexDirection="column">
       <Menu>
         {isMobile ? (
-          <MenuButton
-            w={1} // workaround to fix width
-            as={IconButton}
-            icon={<HamburgerIcon />}
-            variant="outline"
-            onClick={() => setOpen(!open)}
-          />
-        ) : null}
-        {!isMobile || (isMobile && open)
-          ? (
-            <Menu>
-              <SideMenuButton icon={MdEdit} text="Blog" url="blog" />
-              <SideMenuButton icon={MdInfo} text="About" url="about" />
-              <SideMenuButton icon={MdAutoGraph} text="Experience" url="experience" />
-              <SideMenuButton icon={MdConstruction} text="Work" url="work" />
-              <SideMenuButton icon={MdContactPage} text="Contact" url="contact" />
-            </Menu>
-          ) : null}
+          <Menu>
+            <MenuButton
+              w={1} // workaround to fix width
+              as={IconButton}
+              icon={<HamburgerIcon />}
+              variant="outline"
+              onClick={() => setOpen(!open)}
+            />
+            <MenuList w="fit-content">
+              <MenuItem as="a" href="blog">Blog</MenuItem>
+              <MenuItem as="a" href="about">About</MenuItem>
+              <MenuItem as="a" href="experience">Experience</MenuItem>
+              <MenuItem as="a" href="work">Work</MenuItem>
+              <MenuItem as="a" href="contact">Contact</MenuItem>
+            </MenuList>
+          </Menu>
+        ) : (
+          <Menu>
+            <SideMenuButton icon={MdEdit} text="Blog" url="blog" />
+            <SideMenuButton icon={MdInfo} text="About" url="about" />
+            <SideMenuButton icon={MdAutoGraph} text="Experience" url="experience" />
+            <SideMenuButton icon={MdConstruction} text="Work" url="work" />
+            <SideMenuButton icon={MdContactPage} text="Contact" url="contact" />
+          </Menu>
+        )}
+
       </Menu>
     </Flex>
 
