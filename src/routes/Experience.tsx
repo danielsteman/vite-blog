@@ -72,7 +72,9 @@ const Experience = () => (
         During my studies I continued to work at Virtuagym on a part-time basis. I automated business processes within the finance department through scripting in VBA and Python, while contributing to the integration of a new payment provider (Stripe).
       </Text>
     </Box>
-    <PageTitle title="Educational" />
+    <PageTitle>
+      Educational
+    </PageTitle>
     <Box py={4}>
       <Link
         href="https://vu.nl/en/education/master/finance-duisenberg-honours-programme-in-finance-and-technology"
