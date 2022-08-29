@@ -4,7 +4,9 @@ import Base from './Base';
 
 const NotFound = () => (
   <Base>
-    <PageTitle title="There is nothing here... 😅" />
+    <PageTitle>
+      There is nothing here... 😅
+    </PageTitle>
   </Base>
 );
 

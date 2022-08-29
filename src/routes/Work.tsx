@@ -24,7 +24,9 @@ const Work = () => {
 
   return (
     <Base>
-      <PageTitle title={title} />
+      <PageTitle>
+        {title}
+      </PageTitle>
       <Text>
         Over the last
         {' '}

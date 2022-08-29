@@ -12,7 +12,9 @@ import Base from './Base';
 
 const Experience = () => (
   <Base>
-    <PageTitle title="Professional" />
+    <PageTitle>
+      Professional
+    </PageTitle>
     <Box py={4} mb={4}>
       <Heading size="lg" fontWeight={400}>
         Data and Software Engineer

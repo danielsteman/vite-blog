@@ -7,7 +7,9 @@ const About = () => {
   const title = "Hi! I'm Daniel 👋";
   return (
     <Base>
-      <PageTitle title={title} />
+      <PageTitle>
+        {title}
+      </PageTitle>
       <Text>
         Enthousiastic about most tech related things and always learning.
       </Text>

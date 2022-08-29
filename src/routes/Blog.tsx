@@ -21,7 +21,9 @@ const Blog = () => {
   ];
   return (
     <Base>
-      <PageTitle title="Blog" />
+      <PageTitle>
+        Blog
+      </PageTitle>
       {
         blogs.map((blog: IBlog) => (
           <BlogPreview

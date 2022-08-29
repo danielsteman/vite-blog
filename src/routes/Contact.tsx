@@ -25,7 +25,9 @@ const Contact = () => {
 
   return (
     <Base>
-      <PageTitle title="Contact" />
+      <PageTitle>
+        Contact
+      </PageTitle>
       <form onSubmit={handleSubmit}>
         <FormControl>
           <FormLabel>Email address</FormLabel>
