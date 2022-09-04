@@ -1,6 +1,6 @@
 FROM node:16.15.1 AS builder
 WORKDIR /usr/src/app
-COPY .. .
+COPY . .
 RUN npm install && npm run build
 
 FROM nginx:alpine
