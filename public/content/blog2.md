@@ -4,3 +4,4 @@ Maybe you're just like me and you're doing several side projects. Some of them y
 &nbsp;
 
 Unless you want to invent the wheel yourself (like me), you can go ahead and grab a [template](https://github.com/danielsteman/vite-blog), to create one just like this. The instructions in the `README.md` are self explanatory.
+
