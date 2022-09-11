@@ -44,7 +44,7 @@ const Base: React.FC<Props> = ({ children }) => {
             ) : null}
             <Link to="/">
               <Logo
-                h="8vmin"
+                h="10vmin"
                 pointerEvents="none"
               />
             </Link>
