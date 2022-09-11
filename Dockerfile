@@ -1,4 +1,6 @@
 FROM node:16.15.1 AS builder
+ARG PAT
+ENV VITE_PAT=$PAT
 WORKDIR /usr/src/app
 COPY . .
 RUN npm install && npm run build
