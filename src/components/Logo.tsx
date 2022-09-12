@@ -3,17 +3,21 @@ import {
   chakra,
   keyframes,
   ImageProps,
-  forwardRef,
   usePrefersReducedMotion,
+  Box,
 } from '@chakra-ui/react';
 import logo from '../assets/memoji.png';
 
-const spin = keyframes`
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-`;
+const Logo = (props: ImageProps) => {
+  const [rotateClockwise, setRotateClockwise] = React.useState(false);
 
-const Logo = forwardRef<ImageProps, 'img'>((props, ref) => {
+  const ref = React.useRef<HTMLImageElement | undefined>();
+  const computedStyle = ref.current ? window.getComputedStyle(ref.current) : null;
+
+  const spin = keyframes`
+  from { transform: rotate(${rotateClockwise ? 0 : 360}deg); }
+  to { transform: rotate(${rotateClockwise ? 360 : 0}deg); }
+  `;
   const prefersReducedMotion = usePrefersReducedMotion();
 
   const animation = prefersReducedMotion
@@ -21,15 +25,21 @@ const Logo = forwardRef<ImageProps, 'img'>((props, ref) => {
     : `${spin} infinite 20s linear`;
 
   return (
-    <chakra.img
-      animation={animation}
-      src={logo}
-      ref={ref}
-      ml={3}
-      mt={1}
-      {...props}
-    />
+    <Box
+      onClick={() => {
+        setRotateClockwise(!rotateClockwise);
+      }}
+    >
+      <chakra.img
+        animation={animation}
+        src={logo}
+        // ref={ref}
+        ml={3}
+        mt={1}
+        {...props}
+      />
+    </Box>
   );
-});
+};
 
 export default Logo;
