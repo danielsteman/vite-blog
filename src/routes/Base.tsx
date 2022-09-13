@@ -16,6 +16,7 @@ import Logo from '../components/Logo';
 import customTheme from '../themes/theme';
 import NavigationButton from '../components/NavigationButton';
 import SideMenu from '../components/SideMenu';
+import SearchBar from '../components/SearchBar';
 
 interface Props {
   children: React.ReactNode;
@@ -45,6 +46,7 @@ const Base: React.FC<Props> = ({ children }) => {
               h="10vmin"
               pointerEvents="none"
             />
+            {/* <SearchBar /> */}
             <Spacer />
             <Box>
               <NavigationButton url="https://www.github.com/danielsteman" icon={FaGithub} />
