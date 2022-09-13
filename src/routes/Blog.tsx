@@ -1,6 +1,5 @@
 import React from 'react';
 import BlogPreview from '../components/BlogPreview';
-import PageTitle from '../components/PageTitle';
 import { IBlog } from '../shared/repo.interface';
 import Base from './Base';
 
