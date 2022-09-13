@@ -11,7 +11,6 @@ import {
 import {
   FaGithub, FaStackOverflow, FaLinkedin, FaLastfmSquare,
 } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
 import ColorModeSwitcher from '../components/ColorModeSwitcher';
 import Logo from '../components/Logo';
 import customTheme from '../themes/theme';
@@ -42,12 +41,10 @@ const Base: React.FC<Props> = ({ children }) => {
                 <SideMenu />
               </Box>
             ) : null}
-            <Link to="/">
-              <Logo
-                h="10vmin"
-                pointerEvents="none"
-              />
-            </Link>
+            <Logo
+              h="10vmin"
+              pointerEvents="none"
+            />
             <Spacer />
             <Box>
               <NavigationButton url="https://www.github.com/danielsteman" icon={FaGithub} />
