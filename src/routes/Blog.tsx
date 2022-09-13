@@ -21,9 +21,6 @@ const Blog = () => {
   ];
   return (
     <Base>
-      <PageTitle>
-        Blog
-      </PageTitle>
       {
         blogs.reverse().map((blog: IBlog) => (
           <BlogPreview
