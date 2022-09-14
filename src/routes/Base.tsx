@@ -35,7 +35,7 @@ const Base: React.FC<Props> = ({ children }) => {
         my={0}
         mx="auto"
       >
-        <GridItem colSpan={4} rowSpan={2}>
+        <GridItem colSpan={[1, 3, 3, 3, 3]} rowSpan={2}>
           <Flex textAlign="left" flexDirection="row">
             {isMobile ? (
               <Box mb={4}>
@@ -46,16 +46,16 @@ const Base: React.FC<Props> = ({ children }) => {
               h="10vmin"
               pointerEvents="none"
             />
-            {/* <SearchBar /> */}
-            <Spacer />
-            <Box>
-              <NavigationButton url="https://www.github.com/danielsteman" icon={FaGithub} />
-              <NavigationButton url="https://www.stackoverflow.com/users/11383969/dsteman" icon={FaStackOverflow} />
-              <NavigationButton url="https://www.linkedin.com/in/danielsteman/" icon={FaLinkedin} />
-              <NavigationButton url="https://www.last.fm/user/daniel-steman" icon={FaLastfmSquare} />
-              <ColorModeSwitcher />
-            </Box>
           </Flex>
+        </GridItem>
+        <GridItem colSpan={[3, 1, 1, 1, 1]} rowSpan={2} textAlign="right">
+          <Box>
+            <NavigationButton url="https://www.github.com/danielsteman" icon={FaGithub} />
+            <NavigationButton url="https://www.stackoverflow.com/users/11383969/dsteman" icon={FaStackOverflow} />
+            <NavigationButton url="https://www.linkedin.com/in/danielsteman/" icon={FaLinkedin} />
+            <NavigationButton url="https://www.last.fm/user/daniel-steman" icon={FaLastfmSquare} />
+            <ColorModeSwitcher />
+          </Box>
         </GridItem>
         {!isMobile ? (
           <GridItem colSpan={1} py={8}>
