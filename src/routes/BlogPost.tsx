@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { useParams } from 'react-router-dom';
+import CodeSnippet from '../components/CodeSnippet';
 import PageTitle from '../components/PageTitle';
 import Base from './Base';
 
@@ -17,6 +18,8 @@ const BlogPost = () => {
   const components = {
     // eslint-disable-next-line react/no-unstable-nested-components, react/prop-types
     h1: ({ ...props }) => <PageTitle>{props.children}</PageTitle>,
+    // eslint-disable-next-line react/no-unstable-nested-components, react/prop-types
+    code: ({ ...props }) => <CodeSnippet>{props.children}</CodeSnippet>,
   };
 
   return (
