@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   Flex,
-  Spacer,
   ChakraProvider,
   Grid,
   GridItem,
@@ -35,7 +34,7 @@ const Base: React.FC<Props> = ({ children }) => {
         my={0}
         mx="auto"
       >
-        <GridItem colSpan={[1, 3, 3, 3, 3]} rowSpan={2}>
+        <GridItem colSpan={[1, 1, 1, 1, 1]} rowSpan={2}>
           <Flex textAlign="left" flexDirection="row">
             {isMobile ? (
               <Box mb={4}>
@@ -48,6 +47,13 @@ const Base: React.FC<Props> = ({ children }) => {
             />
           </Flex>
         </GridItem>
+        {isMobile ? (
+          null
+        ) : (
+          <GridItem colSpan={[0, 2, 2, 2, 2]} rowSpan={2}>
+            <SearchBar isMobile={isMobile} />
+          </GridItem>
+        )}
         <GridItem colSpan={[3, 1, 1, 1, 1]} rowSpan={2} textAlign="right">
           <Box>
             <NavigationButton url="https://www.github.com/danielsteman" icon={FaGithub} />
@@ -57,6 +63,13 @@ const Base: React.FC<Props> = ({ children }) => {
             <ColorModeSwitcher />
           </Box>
         </GridItem>
+        {isMobile ? (
+          <GridItem colSpan={[4, 2, 2, 2, 2]} rowSpan={2}>
+            <SearchBar isMobile={isMobile} />
+          </GridItem>
+        ) : (
+          null
+        )}
         {!isMobile ? (
           <GridItem colSpan={1} py={8}>
             <SideMenu />
