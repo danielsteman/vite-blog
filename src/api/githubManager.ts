@@ -5,7 +5,7 @@ export const getRepoLanguage = async (repo: string) => {
   const response = await request('GET /repos/danielsteman/{repo}/languages', {
     repo,
     headers: {
-      authorization: `token ${import.meta.env.GITHUB_TOKEN}`,
+      authorization: `token ${import.meta.env.VITE_GITHUB_TOKEN}`,
     },
   }).then((resp) => resp.data);
   return response;
@@ -15,7 +15,7 @@ export const getRepos = async () => {
   // example: await getRepos;
   const response = await request('GET /users/danielsteman/repos', {
     headers: {
-      authorization: `token ${import.meta.env.GITHUB_TOKEN}`,
+      authorization: `token ${import.meta.env.VITE_GITHUB_TOKEN}`,
     },
   }).then((resp) => resp.data.filter((repo: any) => repo.fork === false).map(
     async (repo: any) => {
