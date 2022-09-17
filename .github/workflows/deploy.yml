@@ -54,7 +54,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Update version number
-        run: npx semantic-release
+        run: npx semantic-release --repository-url https://github.com/danielsteman/vite-blog.git
         env:
           GH_TOKEN: ${{ secrets.PAT }}
         
