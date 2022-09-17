@@ -9,7 +9,7 @@ on:
 
 # Your workflows jobs.
 jobs:
-  Build and deploy:
+  Build:
     runs-on: ubuntu-latest
     steps:
       # Check-out your repository.
