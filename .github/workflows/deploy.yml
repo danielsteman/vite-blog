@@ -9,7 +9,7 @@ on:
 
 # Your workflows jobs.
 jobs:
-  build:
+  Build and deploy:
     runs-on: ubuntu-latest
     steps:
       # Check-out your repository.
@@ -50,10 +50,11 @@ jobs:
           # By default, this argument is set to "web".
           # For more information look at https://devcenter.heroku.com/articles/process-model
           process_type: web
-  release:
+  Release:
     runs-on: ubuntu-latest
     steps:
-      - name: Update version number.
+      - name: Update version number
+        run: npx semantic-release
         env:
           GH_TOKEN: ${{ secrets.PAT }}
-        run: npx semantic-release
+        
