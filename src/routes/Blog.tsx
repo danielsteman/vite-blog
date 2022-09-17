@@ -13,7 +13,7 @@ const Blog = () => {
     },
     {
       id: 2,
-      title: 'Build your own blog',
+      title: 'BYOB: Build Your Own Blog',
       date: 'Mon 1 Sep, 2022',
       text: 'Maybe you\'re just like me and you\'re doing several side projects. Some of them you complete, some of them you put back on the shelf to maybe pick up at a later point in time, or never. Either way, it can be rewarding to look back from time to time and see what you\'ve been doing over the years.',
     },
