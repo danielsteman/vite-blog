@@ -50,7 +50,10 @@ jobs:
           # By default, this argument is set to "web".
           # For more information look at https://devcenter.heroku.com/articles/process-model
           process_type: web
+  release:
+    runs-on: ubuntu-latest
+    steps:
       - name: Update version number.
         env:
-          VITE_GITHUB_TOKEN: ${{ secrets.PAT }}
+          GH_TOKEN: ${{ secrets.PAT }}
         run: npx semantic-release
