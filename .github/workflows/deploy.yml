@@ -53,8 +53,8 @@ jobs:
   Release:
     runs-on: ubuntu-latest
     steps:
-      - name: Update version number
-        run: npx semantic-release --repository-url "https://github.com/danielsteman/vite-blog.git"
+      - name: Semantic Release
+        uses: cycjimmy/semantic-release-action@v3.0.0
         env:
           GH_TOKEN: ${{ secrets.PAT }}
         
