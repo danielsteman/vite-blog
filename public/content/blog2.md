@@ -13,7 +13,7 @@ git clone https://github.com/danielsteman/vite-blog.git
 
 &nbsp;
 
-You'll need to get your [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token). For local usage, pass it as an environment variable `GITHUB_TOKEN` or save it in `.env` in the root of the repository. If you want to build the Docker image, you'll have to pass it as an argument `PAT`. This means that you also have to set `PAT` in CI builds. I chose a different name because Github doesn't allow secrets with a `GITHUB_` prefix, which causes a problem with the Github action (found in `/.github/workflows).
+You'll need to get your [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token). For local usage, pass it as an environment variable `VITE_GITHUB_TOKEN` or save it in `.env` in the root of the repository. As opposed to Webpack, Vite loads environment variables using `dotenv` [out of the box](https://vitejs.dev/guide/env-and-mode.html), given that the key is prefixed with `VITE_`. If you want to build the Docker image, you'll have to pass it as an argument `PAT`. This means that you also have to set `PAT` in CI builds. I chose a different name because Github doesn't allow secrets with a `GITHUB_` prefix, which causes a problem with the Github action (found in `/.github/workflows).
 
 &nbsp;
 
