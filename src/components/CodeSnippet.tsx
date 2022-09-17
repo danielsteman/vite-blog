@@ -1,13 +1,9 @@
 import React from 'react';
 import { Code } from '@chakra-ui/react';
 
-interface Props {
-  children: React.ReactNode;
-}
-
-const CodeSnippet: React.FC<Props> = ({ children }) => (
+const CodeSnippet = (props: any) => (
   <Code>
-    {children}
+    {props.children}
   </Code>
 );
 

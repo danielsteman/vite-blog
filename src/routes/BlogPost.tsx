@@ -29,8 +29,7 @@ const BlogPost = () => {
   const components = {
     // eslint-disable-next-line react/no-unstable-nested-components, react/prop-types
     h1: ({ ...props }) => <PageTitle>{props.children}</PageTitle>,
-    // eslint-disable-next-line react/no-unstable-nested-components, react/prop-types
-    code: ({ ...props }) => <CodeSnippet>{props.children}</CodeSnippet>,
+    code: CodeSnippet,
     a: LinkRenderer,
   };
 
