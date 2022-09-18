@@ -10,7 +10,7 @@ import Base from './Base';
 
 const LinkRenderer = (props: any) => (
   <a href={props.href} target="_blank" rel="noreferrer">
-    <Text as="span" bgColor="teal">
+    <Text as="span" bgColor="teal" padding={0.5}>
       {props.children}
     </Text>
   </a>
