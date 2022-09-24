@@ -10,8 +10,8 @@ import Work from './routes/Work';
 
 const App = () => (
   <Routes>
-    <Route path="/blog/:blogId" element={<BlogPost />} />
     <Route path="/blog" element={<Blog />} />
+    <Route path="/blog/:blogId" element={<BlogPost />} />
     <Route path="/about" element={<About />} />
     <Route path="/experience" element={<Experience />} />
     <Route path="/work" element={<Work />} />
