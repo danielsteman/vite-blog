@@ -6,3 +6,19 @@ Often, it's hard to observe moisture in soil, making it hard to judge whether yo
 &nbsp;
 
 Soil moisture is the amount of water that is present in the soil. A capacitive soil moisture sensor detects and measures anything that influences its capacitance, such as water. There are also alternatives, such as a conductivity sensor which has two electrodes that get voltage applied. A change in conductivity can be attributed to a change in the amount of water present in soil, as water increases conductivity. Then there are also [leaf sensors](https://en.wikipedia.org/wiki/Leaf_sensor#:~:text=A%20leaf%20sensor%20is%20a,moisture%20level%20in%20plant%20leaves.) that measure hydrostatic pressure in plant cells, which increases when the plant is hydrated and vice versa. Eventually I went with the capacitive sensor because they're cheap, have a faster response and have lower noise compared to the alternatives. 
+
+&nbsp;
+
+![ESP8266 pinout](../../src/assets/esp8266-pinout.jpeg)
+
+&nbsp;
+
+For this project, we actually only need the analog pin to read from the sensor, and the `3.3v` and `gnd` (ground) pin to supply power. The board can be powered through its micro-USB port, but it's also possible to hook it up to a [lithium polymer (LiPo) battery](https://www.aliexpress.com/w/wholesale-lipo-battery.html), which are also commonly found in phones. I used a [charging module](https://www.aliexpress.com/w/wholesale-arduino-battery-charger-module.html) to recharge the battery from time to time. The following schematic shows how these parts come together.
+
+&nbsp;
+
+![Schematic](../../src/assets/soilmoisturemeter-diagram.png)
+
+&nbsp;
+
+If you want to get started with the ESP8266 or a similar board, I highly recommend to consult websites such as [instructables](https://www.instructables.com) or [random nerd tutorials](https://randomnerdtutorials.com/) for tutorials and inspiration.
