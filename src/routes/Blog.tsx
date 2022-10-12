@@ -14,8 +14,14 @@ const Blog = () => {
     {
       id: 2,
       title: 'BYOB: Build Your Own Blog',
-      date: 'Mon 1 Sep, 2022',
+      date: 'Thu 1 Sep, 2022',
       text: 'Maybe you\'re just like me and you\'re doing several side projects. Some of them you complete, some of them you put back on the shelf to maybe pick up at a later point in time, or never. Either way, it can be rewarding to look back from time to time and see what you\'ve been doing over the years.',
+    },
+    {
+      id: 3,
+      title: 'First steps towards a home lab',
+      date: 'Wed 12 Oct, 2022',
+      text: 'Recently I have bought an Intel NUC, primarily to self-host Home Assistant and some other software that you would expect in a home lab.',
     },
   ];
   return (
