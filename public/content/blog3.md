@@ -3,7 +3,7 @@ Recently I have bought an Intel NUC, primarily to self-host Home Assistant and s
 
 &nbsp;
 
-The next step was to open up a port on my home network, so I was able to reach to NUC over the public IP. This, obviously, introduces some security risks so I followed the remedies prescribed by the [Home Assistant blog](https://www.home-assistant.io/blog/2015/12/13/setup-encryption-using-lets-encrypt/). Doing so encrypts traffic and allows me to access Home Assistant through a domain name rather than an IP. This also makes it possible to integrate third party services such as [Google Assistant](https://www.home-assistant.io/integrations/google_assistant/).
+The next step was to open up a port on my home network, so I was able to reach to NUC over the public IP. Obviously, this introduces some security risks so I followed the remedies prescribed by the [Home Assistant blog](https://www.home-assistant.io/blog/2015/12/13/setup-encryption-using-lets-encrypt/). Doing so encrypts traffic and allows me to access Home Assistant through a domain name rather than an IP. This also makes it possible to integrate third party services such as [Google Assistant](https://www.home-assistant.io/integrations/google_assistant/).
 
 &nbsp;
 
