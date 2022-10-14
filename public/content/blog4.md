@@ -9,7 +9,7 @@ Build your Rust project, which incorporates `wasm-bindgen` as a dependency with 
 
 &nbsp;
 
-The command above generates a `pkg/` with artifacts. `create-wasm-app` is a Javascript scaffolding tool that makes it easier to setup a website that incorporates WASM:
+The command above generates a `pkg/` with artifacts. `create-wasm-app` is a Javascript scaffolding tool that makes it easier to setup a website that incorporates WASM. The `www` is the argument and will be the name of the folder containing the boilerplate code:
 
 `npm init wasm-app www`
 
