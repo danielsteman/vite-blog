@@ -14,4 +14,3 @@ The command above generates a `pkg/` with artifacts. `create-wasm-app` is a Java
 `npm init wasm-app www`
 
 &nbsp;
-
