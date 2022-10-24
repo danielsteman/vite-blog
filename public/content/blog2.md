@@ -1,4 +1,11 @@
 # BYOB: Build Your Own Blog
+
+&nbsp;
+
+*Thu 1 Sep, 2022*
+
+&nbsp;
+
 Maybe you're just like me and you're doing several side projects. Some of them you complete, some of them you put back on the shelf to maybe pick up at a later point in time, or never. Either way, it can be rewarding to look back from time to time and see what you've been doing over the years. At least, that was my motivation. And to get some exposure to frontend dev, which I don't get too often in my daily job.
 
 &nbsp;
