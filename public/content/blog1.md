@@ -1,4 +1,4 @@
-# Monitor your houseplants with a NodeMCU ESP8266 microcontroller and a capacitive sensor
+# Monitor your houseplants with a NodeMCU ESP8266 microcontroller and a capacitive sensor 🌱
 
 &nbsp;
 

@@ -1,4 +1,11 @@
 # WASM with React and Rust :crab:
+
+&nbsp;
+
+*Wed 12 Oct, 2022*
+
+&nbsp;
+
 WebAssembly (WASM) is a new approach towards web development, which leverages the speed and robustness of lower level languages such as C, C++ and Rust to power websites. Today I started following [this book](https://rustwasm.github.io/docs/book/game-of-life/setup.html) and felt like writing about my experience with WASM. `wasm-bindgen` is a crate (which is was packages in Rust are called) that is used to interface with Javascript and `wasm-pack` compiles Rust code to WASM. To expose functions in Rust you can add the `#[wasm-bind]` annotation on top of the function signature.
 
 &nbsp;
