@@ -1,4 +1,4 @@
-# First steps towards a home lab
+# First steps towards a home lab ☁️
 
 &nbsp;
 

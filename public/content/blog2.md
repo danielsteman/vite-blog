@@ -1,4 +1,4 @@
-# BYOB: Build Your Own Blog
+# BYOB: Build Your Own Blog 🖊️
 
 &nbsp;
 
