@@ -26,10 +26,12 @@ const BlogPreview: React.FC<IBlog> = ({
             <TiArrowRightThick size={24} />
           </Button>
         </Link>
-        <Tag size="lg" colorScheme="red" borderRadius="full" width="fit-content">
-          <Avatar size="xs" ml={-1} mr={2} />
-          <TagLabel>{tags[0]}</TagLabel>
-        </Tag>
+        {tags.map((tag): any => {
+          <Tag size="lg" colorScheme="red" borderRadius="full" width="fit-content">
+            <Avatar size="xs" ml={-1} mr={2} />
+            <TagLabel>{tag}</TagLabel>
+          </Tag>;
+        })}
       </VStack>
       <Box h={0.5} width="80%" bg={bg} my={20} />
     </Box>
