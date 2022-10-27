@@ -31,7 +31,7 @@ const Blog = () => {
       title: 'WASM with React and Rust 🦀',
       date: 'Fri 24 Oct, 2022',
       text: 'Web Assembly (WASM) is a new approach towards web development, which leverages the speed and robustness of lower level languages such as C, C++ and Rust to power websites. In this post I will go through an example in Rust.',
-      tags: ['Web Development'],
+      tags: ['Web Development', 'Rust'],
     },
   ];
   return (

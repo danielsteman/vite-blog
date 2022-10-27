@@ -1,12 +1,12 @@
 import React from 'react';
 import {
-  Avatar,
-  Box, Button, Tag, TagLabel, Text, useColorModeValue, VStack,
+  Box, Button, Text, useColorModeValue, VStack,
 } from '@chakra-ui/react';
 import { TiArrowRightThick } from 'react-icons/ti';
 import { Link } from 'react-router-dom';
 import { IBlog } from '../shared/repo.interface';
 import PageTitle from './PageTitle';
+import BlogTags from './BlogTags';
 
 const BlogPreview: React.FC<IBlog> = ({
   id, title, date, text, tags,
@@ -18,20 +18,15 @@ const BlogPreview: React.FC<IBlog> = ({
       <Text py={4} opacity="70%">
         {date}
       </Text>
-      <Text>{text}</Text>
+      <Text mb={4}>{text}</Text>
       <VStack alignItems="left">
+        <BlogTags tags={tags} />
         <Link to={`/blog/${id}`}>
-          <Button mt={8} py={1}>
+          <Button mt={4} py={1}>
             <Text mr={1}>Read more</Text>
             <TiArrowRightThick size={24} />
           </Button>
         </Link>
-        {tags.map((tag): any => {
-          <Tag size="lg" colorScheme="red" borderRadius="full" width="fit-content">
-            <Avatar size="xs" ml={-1} mr={2} />
-            <TagLabel>{tag}</TagLabel>
-          </Tag>;
-        })}
       </VStack>
       <Box h={0.5} width="80%" bg={bg} my={20} />
     </Box>
