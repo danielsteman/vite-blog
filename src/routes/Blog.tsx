@@ -33,6 +33,13 @@ const Blog = () => {
       text: 'Web Assembly (WASM) is a new approach towards web development, which leverages the speed and robustness of lower level languages such as C, C++ and Rust to power websites. In this post I will go through an example in Rust.',
       tags: ['Web Development', 'Rust'],
     },
+    {
+      id: 5,
+      title: 'ML model serving with Seldon Core (MLOps part 1) 🤖🧠',
+      date: 'TBD',
+      text: 'In this series of posts I want to write about my journey towards a fully functional machine learning operations (MLOps) ecosystem that I started working on.',
+      tags: ['Machine learning'],
+    },
   ];
   return (
     <Base>
