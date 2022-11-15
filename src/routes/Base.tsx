@@ -37,7 +37,7 @@ const Base: React.FC<Props> = ({ children }) => {
         <GridItem colSpan={[1, 1, 1, 1, 1]} rowSpan={2}>
           <Flex textAlign="left" flexDirection="row">
             {isMobile ? (
-              <Box mb={4}>
+              <Box mb={4} zIndex={3}>
                 <SideMenu />
               </Box>
             ) : null}
