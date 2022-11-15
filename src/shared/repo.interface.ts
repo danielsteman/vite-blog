@@ -10,4 +10,5 @@ export interface IBlog {
   title: string
   date: string
   text: string
+  tags: string[]
 }
