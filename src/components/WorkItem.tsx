@@ -17,7 +17,7 @@ const WorkItem: React.FC<Props> = ({
   return (
     <Box key={repo.id} py={4}>
       <VStack align="left" py={2}>
-        <Link href="https://chakra-ui.com" isExternal w="fit-content">
+        <Link href={repo.url} isExternal w="fit-content">
           <HStack>
             <Heading size="sm">{repo.name}</Heading>
             <ExternalLinkIcon mx="2px" />
