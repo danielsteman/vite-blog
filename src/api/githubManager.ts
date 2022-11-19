@@ -25,6 +25,7 @@ export const getRepos = async () => {
           id: repo.id,
           name: repo.name,
           description: repo.description,
+          url: repo.html_url,
           languages,
         }
       );
