@@ -20,7 +20,7 @@ const BlogTags: React.FC<Props> = ({ tags }) => {
     <HStack>
       {tags.map((tag: string) => (
         <Tag size="md" colorScheme={tagsColors[tag]} borderRadius="full" width="fit-content" px={3} py={1}>
-          <TagLabel mb={-1}>{tag}</TagLabel>
+          <TagLabel>{tag}</TagLabel>
         </Tag>
       ))}
     </HStack>

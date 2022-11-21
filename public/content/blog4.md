@@ -1,4 +1,4 @@
-# WASM with React and Javascript :crab:
+# WASM with Rust and Javascript :crab:
 
 &nbsp;
 
