@@ -15,7 +15,7 @@ Soil moisture is the amount of water that is present in the soil. A capacitive s
 
 &nbsp;
 
-![ESP8266 pinout](../../src/assets/esp8266-pinout.jpeg)
+![ESP8266 pinout](../images/esp8266-pinout.jpeg)
 
 &nbsp;
 
@@ -23,7 +23,7 @@ For this project, we actually only need the analog pin to read from the sensor, 
 
 &nbsp;
 
-![Schematic](../../src/assets/soilmoisturemeter-diagram.png)
+![Schematic](../images/soilmoisturemeter-diagram.png)
 
 &nbsp;
 
