@@ -2,7 +2,7 @@
 
 &nbsp;
 
-*TBD*
+_TBD_
 
 &nbsp;
 
@@ -10,13 +10,14 @@ Usually a machine learning project starts off with the configuration and trainin
 
 &nbsp;
 
-To solve this issue, the trained model needs to be made available to others, which can be done by deploying it as an application on a server, with an interface so it can communicate (API). Instead of reinventing the wheel and building a custom API, one could use [Seldon Core](https://github.com/SeldonIO/seldon-core) to do this. This open-source, *blazingly fast*, framework, can convert machine learning models into production-ready REST or GRPC microservices. Aside from horizontal scalability, it offers a bunch of features such as "Advanced Metrics, Request Logging, Explainers, Outlier Detectors, A/B Tests, Canaries and more". I won't get into these features, but it's good to know that they exist.
+To solve this issue, the trained model needs to be made available to others, which can be done by deploying it as an application on a server, with an interface so it can communicate (API). Instead of reinventing the wheel and building a custom API, one could use [Seldon Core](https://github.com/SeldonIO/seldon-core) to do this. This open-source, _blazingly fast_, framework, can convert machine learning models into production-ready REST or GRPC microservices. Aside from horizontal scalability, it offers a bunch of features such as "Advanced Metrics, Request Logging, Explainers, Outlier Detectors, A/B Tests, Canaries and more". I won't get into these features, but it's good to know that they exist.
 
 &nbsp;
 
-
+![Seldon Core high level overview](../images/seldon-core-high-level.jpg)
 
 &nbsp;
+
+The top image is from [the Seldon docs](https://docs.seldon.io/projects/seldon-core/en/latest/workflow/github-readme.html) and shows a simple example and a more elaborate example that uses more features. For my experiment, I went with a single model and focused on model serving.
 
 You might ask, why Seldon Core and not [BentoML](https://github.com/bentoml/BentoML) or [Kubeflow](https://github.com/kubeflow/kubeflow) or another tool that has recently risen among the wave of [MLOps](https://ml-ops.org/) tools? The honest answer is: I don't know. You have to start somewhere, and Seldon Core seemed to match our (future) requirements. There are also managed solutions such as Azure ML, AWS Sagemaker and Google Cloud ML, but those provide less flexibility (and are less fun if you want to tinker like me).
-
