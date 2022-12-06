@@ -15,6 +15,7 @@ const BlogTags: React.FC<Props> = ({ tags }) => {
     DevOps: 'red',
     'Internet of Things': 'blue',
     Rust: 'orange',
+    'Machine learning': 'green',
   };
   return (
     <HStack>
