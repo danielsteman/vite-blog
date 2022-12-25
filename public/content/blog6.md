@@ -1,4 +1,4 @@
-# Recommender systems
+# Recommender systems 📈
 
 &nbsp;
 
@@ -16,7 +16,7 @@ A popularity-based model is often used as a baseline because it is fairly simple
 
 ### Cosine similarity
 
-Cosine similarity is a measure of similarity between two vectors, where one vector could be a user and one vector could be an item, where the goal would be to find out how well the item fits the user. For such a problem the user's earlier interactions need to be known. 
+[Cosine similarity](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.cosine_similarity.html) is a measure of similarity between two vectors, where one vector could be a user and one vector could be an item, where the goal would be to find out how well the item fits the user. For such a problem the user's earlier interactions need to be known. 
 
 ### Collaborative filtering
 
@@ -28,6 +28,3 @@ User-based: find a user that shows a similar behaviour and recommend that this u
 ### Model based collaborative filtering
 
 You start with an interaction matrix (of users and items e.g.) which can be exactly decomposed in three matrices. If the interaction matrix is used as is, the model will be overfitted. To introduce some nuance, rows and columns are dropped and replaced by a number of K latent features, such that you end up with two matrices that can be multiplied to arrive at an approximation of the interaction matrix. 
-
-
-
