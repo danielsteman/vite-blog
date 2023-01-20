@@ -1,20 +1,12 @@
-import React from 'react';
-import {
-  Box,
-  Heading,
-  HStack,
-  Link,
-  Text,
-} from '@chakra-ui/react';
-import { ExternalLinkIcon } from '@chakra-ui/icons';
-import PageTitle from '../components/PageTitle';
-import Base from './Base';
+import React from "react";
+import { Box, Heading, HStack, Link, Text } from "@chakra-ui/react";
+import { ExternalLinkIcon } from "@chakra-ui/icons";
+import PageTitle from "../components/PageTitle";
+import Base from "./Base";
 
 const Experience = () => (
   <Base>
-    <PageTitle>
-      Professional
-    </PageTitle>
+    <PageTitle>Professional</PageTitle>
     <Box py={4} mb={4}>
       <Heading size="lg" fontWeight={400}>
         Data and Software Engineer
@@ -28,10 +20,14 @@ const Experience = () => (
         </HStack>
       </Link>
       <Heading size="sm" fontWeight={700} py={2}>
-        May 2022 - Present
+        Sep 2021 - Present
       </Heading>
       <Text>
-        Scaling data science by designing, testing and deploying containerized Python code on Azure-managed Kubernetes. The stack includes, but is not limited to, infrastructure as code (Terraform), CI/CD (AzDevops), orchestration (Airflow), deployment (Helm), API development (FastAPI), MLops, parallelization (Dask, Spark).
+        Scaling data science by designing, testing and deploying containerized
+        Python code on Azure-managed Kubernetes. The stack includes, but is not
+        limited to, infrastructure as code (Terraform), CI/CD (AzDevops),
+        orchestration (Airflow), deployment (Helm), API development (FastAPI),
+        MLops, parallelization (Dask, Spark).
       </Text>
     </Box>
     <Box py={4} mb={4}>
@@ -47,10 +43,12 @@ const Experience = () => (
         </HStack>
       </Link>
       <Heading size="sm" fontWeight={700} py={2}>
-        Jan 2021 - May 2022
+        Jan 2021 - Aug 2021
       </Heading>
       <Text>
-        Three rotations in the fields of Infrastructure & Cloud, Data Science and Software Development. I became acquainted with the backend and frontend of asr.nl.
+        Three rotations in the fields of Infrastructure & Cloud, Data Science
+        and Software Development. I became acquainted with the backend and
+        frontend of asr.nl.
       </Text>
     </Box>
     <Box py={4}>
@@ -69,12 +67,13 @@ const Experience = () => (
         Feb 2017 - Dec 2020
       </Heading>
       <Text>
-        During my studies I continued to work at Virtuagym on a part-time basis. I automated business processes within the finance department through scripting in VBA and Python, while contributing to the integration of a new payment provider (Stripe).
+        During my studies I continued to work at Virtuagym on a part-time basis.
+        I automated business processes within the finance department through
+        scripting in VBA and Python, while contributing to the integration of a
+        new payment provider (Stripe).
       </Text>
     </Box>
-    <PageTitle>
-      Educational
-    </PageTitle>
+    <PageTitle>Educational</PageTitle>
     <Box py={4}>
       <Link
         href="https://vu.nl/en/education/master/finance-duisenberg-honours-programme-in-finance-and-technology"
@@ -88,12 +87,16 @@ const Experience = () => (
           <ExternalLinkIcon mx="2px" />
         </HStack>
       </Link>
-      <Heading size="sm" fontWeight={700} py={2}>2019 - 2020</Heading>
+      <Heading size="sm" fontWeight={700} py={2}>
+        2019 - 2020
+      </Heading>
       <Text>
-        Finance & Technology (honours programme). Thesis:
-        {' '}
-        <Link href="https://github.com/danielsteman/thesis-msc-finance"><i>Backtesting a high frequency cointegration-based trading strategy</i></Link>
-        {' '}
+        Finance & Technology (honours programme). Thesis:{" "}
+        <Link href="https://github.com/danielsteman/thesis-msc-finance">
+          <i>
+            Backtesting a high frequency cointegration-based trading strategy
+          </i>
+        </Link>{" "}
         written in Python (grade: 8).
       </Text>
     </Box>
@@ -110,9 +113,12 @@ const Experience = () => (
           <ExternalLinkIcon mx="2px" />
         </HStack>
       </Link>
-      <Heading size="sm" fontWeight={700} py={2}>2013 - 2017</Heading>
+      <Heading size="sm" fontWeight={700} py={2}>
+        2013 - 2017
+      </Heading>
       <Text>
-        A four-year international business programme with one semester abroad in Seoul, South Korea.
+        A four-year international business programme with one semester abroad in
+        Seoul, South Korea.
       </Text>
     </Box>
   </Base>
