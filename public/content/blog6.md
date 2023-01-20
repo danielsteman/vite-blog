@@ -1,4 +1,4 @@
-# Integrating a ML model in an API 🔁
+# Integrating a ML model in an API 🔀
 
 &nbsp;
 
