@@ -111,22 +111,14 @@ These are `pydantic` classes that are used to validate requests and responses, b
 
 ## Routers
 
-Endpoints can be declared directly in `app/main.py` but I always find it more convenient to group endpoints in `Router`s and use the `include_router` method to attach them to the `App` object in `app/main.py`. For example, a router object can be declared like this:
+Endpoints can be declared directly in `app/main.py` but I always find it more convenient to group endpoints in `Router`s and use the `include_router` method to attach them to the `App` object. In the below example, the `router` is not encapusulated in a separate file for demostration but should be in a real project.
 
 &nbsp;
 
 ```
+from fastapi import FastAPI, APIRouter
+
 router = APIRouter(prefix="/classification")
-```
-
-&nbsp;
-
-and this router can be attached like this:
-
-&nbsp;
-
-```
-from fastapi import FastAPI
 
 app = FastAPI()
 app.include_router(router)
@@ -134,4 +126,19 @@ app.include_router(router)
 
 &nbsp;
 
-From the router, we can inject the ML model such that we can fetch predictions when we receive a request with features. The `app.ml.classifier.Classifier` model class
+From the router, we can inject the ML model such that we can fetch predictions when we receive a request with features. The `app.ml.classifier.Classifier` model class is responsible for sending requests to the ML micro service, hence it should be [injected as a dependency](https://fastapi.tiangolo.com/tutorial/dependencies/).
+
+&nbsp;
+
+```
+from fastapi import Depends
+
+@router.post("")
+def create_prediction(
+    clf=Depends(Classifier),
+) -> Any:
+```
+
+&nbsp;
+
+The `Classifier` makes requests with the `requests` module, and because we are calling an interal Kubernetes service, the domain of the ML micro service is formatted like `my-svc.my-namespace.svc.cluster-domain.example`. You can find more info about the Kubernetes DNS [here](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/).
