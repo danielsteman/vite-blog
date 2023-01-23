@@ -75,6 +75,63 @@ Enough about [MLOps things](https://ml-ops.org/). The tree below shows how I lay
 └── tests
 ```
 
+&nbsp;
+
 ## Tables
 
 Let's start with `alembic`. [This](https://alembic.sqlalchemy.org/en/latest/) is the Python tool I'm using to migrate tables to the Postgres DB. It's easy to use, as it leverages the well known object-relational mapping (ORM) library `sqlalchemy` for declaring tables. I prefer setting up tables this way because the configuration will be kept in version control and is easy to reproduce in a CI/CD pipeline.
+
+## Models
+
+Each database table is also declared by a class with a `Base` parent class. To construct the `Base`, the [declarative API](https://docs.sqlalchemy.org/en/13/orm/extensions/declarative/api.html#sqlalchemy.ext.declarative.declared_attr) of `sqlalchemy` is used to map model class names to table names, for example:
+
+&nbsp;
+
+```
+from typing import Any
+from sqlalchemy.orm import as_declarative, declared_attr
+
+
+@as_declarative()
+class Base(object):
+    __name__: str
+
+    @declared_attr
+    def __tablename__(cls) -> str:
+        return cls.__name__.lower()
+```
+
+&nbsp;
+
+## Schemas
+
+These are `pydantic` classes that are used to validate requests and responses, by enforcing type hints. This way we can be sure that the expected features are sent to the ML model and that the ML model gives back an expected response.
+
+&nbsp;
+
+## Routers
+
+Endpoints can be declared directly in `app/main.py` but I always find it more convenient to group endpoints in `Router`s and use the `include_router` method to attach them to the `App` object in `app/main.py`. For example, a router object can be declared like this:
+
+&nbsp;
+
+```
+router = APIRouter(prefix="/classification")
+```
+
+&nbsp;
+
+and this router can be attached like this:
+
+&nbsp;
+
+```
+from fastapi import FastAPI
+
+app = FastAPI()
+app.include_router(router)
+```
+
+&nbsp;
+
+From the router, we can inject the ML model such that we can fetch predictions when we receive a request with features. The `app.ml.classifier.Classifier` model class
