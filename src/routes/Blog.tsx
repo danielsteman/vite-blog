@@ -45,7 +45,7 @@ const Blog = () => {
       id: 6,
       title: "Integrating a ML model in an API 🔀",
       date: "Tue 24 Jan, 2023",
-      text: "",
+      text: "For a project I was working on, we needed more than just the service, we also needed to store predictions and apply some business logic.",
       tags: ["Machine learning"],
     },
   ];
