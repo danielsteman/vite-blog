@@ -1,4 +1,4 @@
-# ML model serving with Seldon Core
+# ML model serving with Seldon Core 🤖🧠
 
 &nbsp;
 

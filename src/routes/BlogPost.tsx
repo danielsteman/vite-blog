@@ -1,12 +1,13 @@
-import { Text } from '@chakra-ui/react';
-import React, { useEffect, useState } from 'react';
-import ReactMarkdown from 'react-markdown';
-import { useParams } from 'react-router-dom';
-import remarkGemoji from 'remark-gemoji';
-import remarkGfm from 'remark-gfm';
-import CodeSnippet from '../components/CodeSnippet';
-import PageTitle from '../components/PageTitle';
-import Base from './Base';
+import { Text } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
+import ReactMarkdown from "react-markdown";
+import { useParams } from "react-router-dom";
+import remarkGemoji from "remark-gemoji";
+import remarkGfm from "remark-gfm";
+import CodeSnippet from "../components/CodeSnippet";
+import PageTitle from "../components/PageTitle";
+import SubTitle from "../components/SubTitle";
+import Base from "./Base";
 
 const LinkRenderer = (props: any) => (
   <a href={props.href} target="_blank" rel="noreferrer">
@@ -17,7 +18,7 @@ const LinkRenderer = (props: any) => (
 );
 
 const BlogPost = () => {
-  const [text, setText] = useState('');
+  const [text, setText] = useState("");
   const params = useParams();
 
   useEffect(() => {
@@ -29,6 +30,7 @@ const BlogPost = () => {
   const components = {
     // eslint-disable-next-line react/no-unstable-nested-components, react/prop-types
     h1: ({ ...props }) => <PageTitle>{props.children}</PageTitle>,
+    h2: ({ ...props }) => <SubTitle>{props.children}</SubTitle>,
     code: CodeSnippet,
     a: LinkRenderer,
   };
