@@ -136,9 +136,15 @@ from fastapi import Depends
 @router.post("")
 def create_prediction(
     clf=Depends(Classifier),
+    X: List[Any],
 ) -> Any:
+    return clf.predict(X)
 ```
 
 &nbsp;
 
-The `Classifier` makes requests with the `requests` module, and because we are calling an interal Kubernetes service, the domain of the ML micro service is formatted like `my-svc.my-namespace.svc.cluster-domain.example`. You can find more info about the Kubernetes DNS [here](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/).
+The `Classifier` makes requests with the `requests` module, and because we are calling an interal Kubernetes service, the domain of the ML micro service is formatted like `my-svc.my-namespace.svc.cluster-domain.example`. You can find more info about the Kubernetes DNS [here](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/). The `Classifier` that was injected earlier gets features `X` and gets prediction through its own `prediction` method.
+
+```
+class Classifier:
+```
