@@ -2,15 +2,15 @@
 
 &nbsp;
 
-Tue 24 Jan, 2023
+Mon 23 Jan, 2023
 
 &nbsp;
 
-In my [previous post](https://www.danielsteman.com/blog/5) I wrote about deploying an ML model using the Seldon Core library. At the end of the post we ended up with a `SeldonDeployment` kubernetes object which roughly resembles a standard `Deployment` object, but with some extras. When deployed, you'll end up with a micro service that runs in a pod and a service that exposes the pod.
+In my [previous post](https://www.danielsteman.com/blog/5) I wrote about deploying a ML model using the Seldon Core library. At the end of the post we ended up with a `SeldonDeployment` kubernetes object which roughly resembles a standard `Deployment` object, but with some extras. When deployed, you'll end up with a micro service that runs in a pod and a service that exposes the pod.
 
 &nbsp;
 
-For a project I was working on, we needed more than just the service, we also needed to store predictions and handle some other business logic. Hence, I built an API with [FastAPI](https://fastapi.tiangolo.com/), which wraps the ML micro service. A very high level design is shown below.
+For a project I was working on, we needed more than just the service, we also needed to store predictions and apply some business logic. Hence, I built a wrapping API and giving our Python-focused stack, my weapon of choice was [FastAPI](https://fastapi.tiangolo.com/). I inspired the design on [an example](https://github.com/tiangolo/full-stack-fastapi-postgresql) that was built by [the maker](https://github.com/tiangolo) of FastAPI, so I would advice you to check that out as well. A very high level design is shown below.
 
 &nbsp;
 
@@ -18,7 +18,7 @@ For a project I was working on, we needed more than just the service, we also ne
 
 &nbsp;
 
-Before, a client could call the ML micro service directly with a post request and a body, where the body contains the data that will be inferred. An example `cURL` request looks like this:
+Before, a client calls the ML micro service directly with a post request and a body, where the body contains the data that will be used to predict. An example `cURL` request looks like the snippet below.
 
 &nbsp;
 
@@ -28,12 +28,12 @@ curl -X POST -H 'Content-Type: application/json' -d '{"ndarray":{"data":[[1,3,3]
 
 &nbsp;
 
-The body, `[1,3,3]`, would be the input `X` in the `predict` method of a trained Scikit Learn model (or model trained with another library, which might have a different standard method).
-In this scenario, data is not persisted.
+The body, `[1,3,3]`, is the input `X`, an argument of the `predict` method of a trained [Scikit Learn](https://scikit-learn.org/stable/) model (or model trained with another library, which might have a different standard method).
+In this scenario, data is not persisted, as the prediction is returned immediately.
 
 &nbsp;
 
-With an API in between, we can do anything we'd like with the incoming requests (from the client) and incoming responses (from the ML micro service), such as writing data to a database for later use. Prediction data is relevant for performance measurements, as a historical set of predictions can be compared to actual historical data points. This could be used to trigger retraining of the ML model, as described in this [MLOps article of Google](https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning). Data sent by the client is relevant because it accumulates to the next training set. Also, new data may have a different distribution compared to the old data that was used to initially train the model. Without storing data it would be impossible to know and it can affect model performance badly. This [blog post](https://superwise.ai/blog/data-drift-detection-basics/) about data drift explains the concept in some more detail.
+With an API in between, we can do anything we'd like with the incoming requests (from the client) and incoming responses (from the ML micro service), such as writing data to a database for later use. Prediction data is relevant for performance measurements, as a historical set of predictions can be compared to actual historical data points. This could be used to trigger retraining of the ML model, as described more in depth in this [MLOps article of Google](https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning). Data sent by the client is relevant because it accumulates to the next training set. Also, new data may have a different distribution compared to the old data that was used to initially train the model. Without storing data it would be impossible to know and it can affect model performance badly. This [blog post](https://superwise.ai/blog/data-drift-detection-basics/) about data drift explains the concept in some more detail.
 
 &nbsp;
 
@@ -133,7 +133,7 @@ From the router, we can inject the ML model such that we can fetch predictions w
 ```
 from fastapi import Depends
 
-@router.post("")
+@router.post("/classify/")
 def create_prediction(
     clf=Depends(Classifier),
     X: List[Any],
@@ -143,8 +143,43 @@ def create_prediction(
 
 &nbsp;
 
-The `Classifier` makes requests with the `requests` module, and because we are calling an interal Kubernetes service, the domain of the ML micro service is formatted like `my-svc.my-namespace.svc.cluster-domain.example`. You can find more info about the Kubernetes DNS [here](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/). The `Classifier` that was injected earlier gets features `X` and gets prediction through its own `prediction` method.
+The `Classifier` makes requests with the `requests` module, and because we are calling an interal Kubernetes service, the domain of the ML micro service is formatted like `my-svc.my-namespace.svc.cluster-domain.example`. You can find more info about the Kubernetes DNS [here](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/).
+
+&nbsp;
+
+In the above exmaple we return the prediction immediately, but that's not neccesary. Instead, we can implement logic in between receiving the request (and its payload as argument `X`) and returning something. For example, we can insert the prediction into the database.
+
+&nbsp;
 
 ```
-class Classifier:
+from fastapi import Depends
+from app import crud
+from app.db.session import get_db
+from app import models
+
+@router.post("/classify/")
+def create_prediction(
+    clf=Depends(Classifier),
+    database_connection=Depends(get_db),
+    X: List[Any],
+) -> Any:
+    prediction = clf.predict(X)
+    database_object = Classification(
+        data=X,
+        prediction=prediction,
+    )
+    crud.classification.create(database_connection, database_object)
+    return clf.predict(X)
 ```
+
+&nbsp;
+
+And just like that, through a [CRUD](https://www.freecodecamp.org/news/crud-operations-crud-definition-in-programming/) method, it's possible to write input and output of the ML microservice to a database for later (or instant) use. This example is very lean and doesn't show the definition of the CRUD method. If you'd like to see an example of that, please check out [this project builder](https://github.com/tiangolo/full-stack-fastapi-postgresql).
+
+## Deployment
+
+Instead of using a `SeldonDeployment`, as explained in the [previous blog](https://www.danielsteman.com/blog/5), we use a regular `Deployment` [Kubernetes object](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) to deploy this API. Obviously, the application needs to be packaged in a Docker container first. [The docs](https://fastapi.tiangolo.com/deployment/docker/) contain an elaborate explanation of how to do this and I also referred to these steps in my own project. I exposed my database credentials through environment variables in the `Deployment`, which isn't the most secure way but sufficient for a [MVP](https://www.techopedia.com/definition/27809/minimum-viable-product-mvp). Additionally, I deployed a `Service` [kubernetes object](https://kubernetes.io/docs/concepts/services-networking/service/) to expose the FastAPI container on port 80, the port commonly used for HTTP traffic. Depending on your load balancing solution, some additional steps are required to expose the [Swagger docs](https://swagger.io/docs/) which are [automatically generated](https://fastapi.tiangolo.com/features/) by FastAPI. More details about deployment strategies and [infra-as-code tools](https://www.terraform.io/) are out of scope for this article, so I'll save them for later!
+
+&nbsp;
+
+Hopefully this was somewhat informative. At least I had fun building something with FastAPI and extending the functionality of ML micro services 😄.
