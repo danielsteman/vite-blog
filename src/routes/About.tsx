@@ -27,17 +27,24 @@ const About = () => {
           NixOS
           <ExternalLinkIcon mx="1px" />
         </Link>
-        ), microcontroller applications (
+        ) and microcontroller applications (such as this{" "}
         <Link href="https://github.com/danielsteman/sousvide/tree/master">
-          sensors
+          sensor
           <ExternalLinkIcon mx="1px" />
         </Link>
-        ,{" "}
+        and my{" "}
         <Link href="https://github.com/danielsteman/ckbrd">
-          custom keyboards
+          custom split keyboard
           <ExternalLinkIcon mx="1px" />
         </Link>
         ).
+      </Text>
+      <Text mt={2}>
+        Since a couple of years, I also have experience building frontend
+        projects, mainly using React and Typescript. Although it's not my
+        specialty, the rendering paradigms and opportunities to optimize web
+        app performance interest me. Ultimately, I aim to be (backend-biased) full-stack, such that I can
+        contribute to projects at any stage.
       </Text>
     </Base>
   );
