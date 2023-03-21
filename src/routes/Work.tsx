@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, Text } from '@chakra-ui/react';
+import { Link, Spinner, Text } from '@chakra-ui/react';
 import { getRepos } from '../api/githubManager';
 import PageTitle from '../components/PageTitle';
 import Base from './Base';
@@ -11,7 +11,7 @@ interface IRepos extends Array<IRepo> { }
 const Work = () => {
   const title = 'Work';
 
-  const [repos, setRepos] = useState<IRepos | null>([]);
+  const [repos, setRepos] = useState<IRepos>([]);
   const start: number = new Date(1561939200000).getFullYear();
   const end: number = new Date().getFullYear();
 
@@ -40,9 +40,13 @@ const Work = () => {
         {' '}
         to render projects dynamically.
       </Text>
-      {repos!.map((repo: IRepo) => (
-        <WorkItem repo={repo} key={repo.id} />
-      ))}
+      {repos.length === 0 ? <Spinner size="lg" /> : (
+        <>
+          {repos.map((repo: IRepo) => (
+            <WorkItem repo={repo} key={repo.id} />
+          ))}
+        </>
+      )}
     </Base>
   );
 };
