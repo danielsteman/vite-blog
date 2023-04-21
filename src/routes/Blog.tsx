@@ -48,6 +48,14 @@ const Blog = () => {
       text: "For a project I was working on, we needed more than just the service, we also needed to store predictions and apply some business logic.",
       tags: ["Machine learning"],
     },
+    {
+      id: 7,
+      title:
+        "Taking ergonomics to the next level with a 'split ergo mech' keyboard 🖖",
+      date: "Sat 22 Apr, 2023",
+      text: "In my workflow optimization quest I came across split keyboards and couldn't let go the idea of building one.",
+      tags: ["Hardware"],
+    },
   ];
   return (
     <Base>
