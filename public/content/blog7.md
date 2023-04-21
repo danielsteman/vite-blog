@@ -1,19 +1,26 @@
-# Integrating a ML model in an API 🔀
+# Taking ergonomics to the next level with the split CKBRD
 
 &nbsp;
 
-Tue 25 Apr, 2023
+TBD
 
 &nbsp;
 
-
-It's time to talk about the tech stack used for this website. Since some time I started with Rust because I was longing for a statically-typed language after doing a series of projects in Python and because I heared [so many good things](https://survey.stackoverflow.co/2022/#overview) about the language. However, it's tough a find use cases for Rust (unless you're building graphics engines or contributing to the Linux kernel), as most companies haven't adopted it in their stack. Because of that, I decided to clone this tech blog using only Rust. My weapons of choice for this assigned are [Yew](https://yew.rs/) and [Rocket](https://rocket.rs/), which make up the foundation for the frontend and backend, respectively. 
+Already a few months ago I entered the rabbit hole of custom- ergo- mechanical- split keyboards and by now I built my own. I wanted to give the [ortholinear]() key layout a shot as I read many good things about it and it kind of made sense to me from an ergonomic perspective. The [diagonal layout]() of regular keyboards is still a legacy from typewriters and is inferior, [some claim](). Also I wanted to try a [layered key layout]() to save space and make the keyboard more compact so I can bring it around easily. I also like the idea of a layered layout because it will decrease the distance between keys and raise typing speed potential (which surely is a time investment to reach its full potential).
 
 &nbsp;
 
-The original website is a backendless React project with an Nginx web server that renders markdown files. This is fairly simple to maintain and use: everytime I want to add an article, I can add a markdown file and merge the changes, which will trigger a new build and deployment. 
+After countless hours of research I decided to go with a wireless Corne Cherry v3. Its design is [open sourced]() and can be freely copied :smiley:. I ordered the following list of parts [here]():
 
-You could save the markdown files in your backend and serve them as HTML to the frontend upon request. The advantage is that the HTML will be server-side rendered and won't depend on computations of the client, which might provide a performance advantage. Also, it won't be necessary to write a bunch of methods and accompanying tests to interact with a database, because you're just serving files that are already present on the server. For simplicity I will go with this solution and see how it works out, as it is sufficiently scalable for a blog post website. 
+&nbsp;
 
-As a first step to implement this idea, I will create a backend server project that contains the markdown files. The file tree looks something like this:
+- PCB
+- more...
 
+&nbsp;
+
+As the PCB design is open sourced you can basically order those parts at any PCB printing shop. The other parts are quite generic and widely available from other shops as well. After receiving the parts it was time to assemble the thing. You'll need a soldering iron and a steady hand to mount all the parts on the PCB. Without that much experience with soldering, this was quite doable, so don't let that discourage you. The Nice!Nano is really easy to flash, thanks to the [clear instructions and accompanied Github actions](), so you don't have to bother with building the firmware yourself. [This](https://github.com/danielsteman/ckbrd) is my clone, which contains the keymap in ``.
+
+&nbsp;
+
+By now I can say that it definitely takes some time to get used to the Corne, but it definitely makes work more chill. A split keyboard makes it easier to keep a good posture for a longer amount of time working behind a desk. The layered keys make you want to have a monitor with the keymap open, because it really feels like relearning to type. This is also due to the ortholinear layout, which causes you to mistype sometimes. After you wrapped your brain around the new positions and keymaps, you'll notice that the potential it has in terms of typing speed. 
