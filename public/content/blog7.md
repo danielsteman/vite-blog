@@ -13,4 +13,7 @@ It's time to talk about the tech stack used for this website. Since some time I 
 
 The original website is a backendless React project with an Nginx web server that renders markdown files. This is fairly simple to maintain and use: everytime I want to add an article, I can add a markdown file and merge the changes, which will trigger a new build and deployment. 
 
-You could save the markdown files in your backend and serve them as HTML to the frontend upon request. The advantage is that the HTML will be server-side rendered and won't depend on computations of the client, which might provide a performance advantage. Also, it won't be necessary to write a bunch of methods and accompanying tests to interact with a database, because you're just serving files that are already present.
+You could save the markdown files in your backend and serve them as HTML to the frontend upon request. The advantage is that the HTML will be server-side rendered and won't depend on computations of the client, which might provide a performance advantage. Also, it won't be necessary to write a bunch of methods and accompanying tests to interact with a database, because you're just serving files that are already present on the server. For simplicity I will go with this solution and see how it works out, as it is sufficiently scalable for a blog post website. 
+
+As a first step to implement this idea, I will create a backend server project that contains the markdown files. The file tree looks something like this:
+
