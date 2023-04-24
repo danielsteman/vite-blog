@@ -1,4 +1,4 @@
-# Taking ergonomics to the next level with the split CKBRD
+# Taking ergonomics to the next level with a split ergo mech keyboard 🖖
 
 &nbsp;
 
