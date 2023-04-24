@@ -51,9 +51,9 @@ const Blog = () => {
     {
       id: 7,
       title:
-        "Taking ergonomics to the next level with a 'split ergo mech' keyboard 🖖",
-      date: "Sat 22 Apr, 2023",
-      text: "In my workflow optimization quest I came across split keyboards and couldn't let go the idea of building one.",
+        "Taking ergonomics to the next level with a split ergo mech keyboard 🖖",
+      date: "Sat 24 Apr, 2023",
+      text: "In my workflow optimization quest I came across split keyboards and couldn't let go of the idea to build one.",
       tags: ["Hardware"],
     },
   ];
