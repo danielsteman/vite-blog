@@ -1,8 +1,8 @@
-# Building a SaaS template 🚀
+# SaaS starter wrapped in a monorepo with microservices 🚀
 
 &nbsp;
 
-TBD
+Sat 5 Jun, 2023
 
 &nbsp;
 
@@ -12,38 +12,74 @@ To make things easy I went for a Typescript stack: backend services with [Expres
 
 With the anticipation that a SaaS project can become complex quickly, I opted for a micro services architecture, where the backend in split in several services where each service is separated from the other based on their responsibilities. I also decided to place them in a single repository. This approach also goes by the alias of [monorepo](https://en.wikipedia.org/wiki/Monorepo). Despite the fact that services are not isolated in separate repositories, it should still be convenient to collaborate, since each service has its own depedencies and build scripts (e.g. `package.json` and `Dockerfile`s). The advantage of a monorepo, especially at the start of a project, is that it's easy to navigate through and allows for [atomic commits](https://en.wikipedia.org/wiki/Atomic_commit). At work, we keep services in dedicated repositories, each which its own CI/CD pipeline Terraform components. This has advantages when you're scaling, but also increases overhead since there are more than twenty pipelines that need to be green and because each repository requires boilerplate code that gets outdated quickly. Hence, I wanted to experience the alternative: monorepo. The project structure looks something like this:
 
+&nbsp;
+
+```
+├── README.md
 ├── infrastructure
-│ ├── main.tf
-│ └── variables.tf
+│   ├── firebase_auth.tf
+│   ├── firebase_project.tf
+│   ├── firebase_storage.tf
+│   ├── gcp_project.tf
+│   ├── gke.tf
+│   ├── main.tf
+│   └── variables.tf
 ├── packages
-│ ├── chat
-│ | ├── Dockerfile
-│ │ ├── package.json
-│ │ ├── src
-│ │ ├── swagger.yaml
-│ │ ├── tsconfig.json
-│ │ └── yarn.lock
-│ ├── documents
-│ | ├── Dockerfile
-│ │ ├── package.json
-│ │ ├── src
-│ │ ├── swagger.yaml
-│ │ ├── tsconfig.json
-│ │ └── yarn.lock
-│ └── web
-│ ├── Dockerfile
-│ ├── index.html
-│ ├── package.json
-│ ├── public
-│ ├── src
-│ ├── tsconfig.json
-│ ├── vite.config.ts
+│   ├── chat
+│   │   ├── node_modules
+│   │   ├── package.json
+│   │   ├── src
+│   │   ├── swagger.yaml
+│   │   ├── tsconfig.json
+│   │   └── yarn.lock
+│   ├── documents
+│   │   ├── node_modules
+│   │   ├── package.json
+│   │   ├── src
+│   │   ├── swagger.yaml
+│   │   ├── tsconfig.json
+│   │   └── yarn.lock
+│   └── web
+│       ├── Dockerfile
+│       ├── index.html
+│       ├── nginx
+│       ├── node_modules
+│       ├── package.json
+│       ├── public
+│       ├── src
+│       ├── tsconfig.json
+│       ├── vite.config.ts
+│       └── yarn.lock
+```
 
-Where each service (in `/packages`) can be build and deployed independently. In `/infrastructure` I keep all Terraform code to deploy infrastructure that hosts the services. You might wonder if this wouldn't cause the CI pipeline to do redundant work everytime it runs. In Github Actions there is small trick to overcome this issue, using `paths`. For example:
+&nbsp;
 
+In `/infrastructure` I keep all Terraform code to deploy infrastructure that hosts the services. Terraform really shines in this template repository, because it makes the infrastructure that this project runs on reproducable and requires just a couple of parameters and manual actions (just as signing up for Terraform Cloud, which is completely free by the way). 
+
+&nbsp;
+
+Each service (in `/packages`) can be build and deployed independently. You might wonder if this wouldn't cause the CI pipeline to do redundant work (such as the lenghty process of building Docker images) everytime it runs. In Github Actions there is small trick to overcome this issue, using `paths`. For example:
+
+&nbsp;
+
+```
 on:
   push:
     paths:
       - 'web/**'
+```
 
+&nbsp;
+
+Alongside the Express services, I use quite some services of the [Firebase](https://firebase.google.com/) backend, which makes it really easy to integrate authentication and a documents database using the [client library](https://firebase.google.com/docs/firestore/client/libraries) in the frontend package (`web`), a Typescript React app created with Vite in this project. By reusing [Chakra UI](https://chakra-ui.com/) components it's easy to put Firebase to work, for example through the Modal that contains a login screen and an option to authenticate with Google.
+
+&nbsp;
+
+![Landing page](../images/saas-starter-0.png)
+
+&nbsp;
+
+![Sign up page](../images/saas-starter-1.png)
+
+&nbsp;
 

@@ -39,14 +39,14 @@ const Blog = () => {
       title: "ML model serving with Seldon Core 🤖🧠",
       date: "Tue 6 Dec, 2022",
       text: "Deploy machine learning models as micro services on Kubernetes.",
-      tags: ["Machine learning"],
+      tags: ["Machine Learning"],
     },
     {
       id: 6,
       title: "Integrating a ML model in an API 🔀",
       date: "Tue 24 Jan, 2023",
       text: "For a project I was working on, we needed more than just the service, we also needed to store predictions and apply some business logic.",
-      tags: ["Machine learning"],
+      tags: ["Machine Learning"],
     },
     {
       id: 7,
@@ -55,6 +55,14 @@ const Blog = () => {
       date: "Sat 24 Apr, 2023",
       text: "In my workflow optimization quest I came across split keyboards and couldn't let go of the idea to build one.",
       tags: ["Hardware"],
+    },
+    {
+      id: 8,
+      title:
+        "SaaS starter wrapped in a monorepo with microservices 🚀",
+      date: "Sat 5 Jun, 2023",
+      text: "",
+      tags: ["Web Development", "DevOps"],
     },
   ];
   return (
