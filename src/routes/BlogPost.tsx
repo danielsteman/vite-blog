@@ -1,4 +1,4 @@
-import { Text } from "@chakra-ui/react";
+import { Text, useColorModeValue } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { useParams } from "react-router-dom";
@@ -9,13 +9,16 @@ import PageTitle from "../components/PageTitle";
 import SubTitle from "../components/SubTitle";
 import Base from "./Base";
 
-const LinkRenderer = (props: any) => (
-  <a href={props.href} target="_blank" rel="noreferrer">
-    <Text as="span" bgColor="teal" padding={0.5}>
-      {props.children}
-    </Text>
-  </a>
-);
+const LinkRenderer = (props: any) => {
+  const bg = useColorModeValue("purple.200", "purple.800");
+  return (
+    <a href={props.href} target="_blank" rel="noreferrer">
+      <Text as="span" bgColor={bg} padding={0.5}>
+        {props.children}
+      </Text>
+    </a>
+  );
+};
 
 const BlogPost = () => {
   const [text, setText] = useState("");
