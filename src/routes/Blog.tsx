@@ -58,10 +58,9 @@ const Blog = () => {
     },
     {
       id: 8,
-      title:
-        "SaaS starter wrapped in a monorepo with microservices 🚀",
+      title: "SaaS-starter wrapped in a monorepo with microservices 🚀",
       date: "Sat 5 Jun, 2023",
-      text: "",
+      text: "This problem is well known and SaaS-starters are widely available, either paid or open-source. My motivation to build my own is to take on the challenge of building a large(r)-scale web application and to understand the project throughout, so that implementating the starter should be easy later on.",
       tags: ["Web Development", "DevOps"],
     },
   ];
