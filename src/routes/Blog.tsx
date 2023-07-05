@@ -63,6 +63,14 @@ const Blog = () => {
       text: "This problem is well known and SaaS-starters are widely available, either paid or open-source. My motivation to build my own is to take on the challenge of building a large(r)-scale web application and to understand the project throughout, so that implementating the starter should be easy later on.",
       tags: ["Web Development", "DevOps"],
     },
+    {
+      id: 9,
+      title:
+        "Parallelizing workloads with Celery and RabbitMQ on Kubernetes 🍃🐇☸️",
+      date: "TBD",
+      text: "Recently I have been working on a project with a lot of IO, as I had to process a vast amount of documents in a relatively short time. After writing the application that contained the business logic, I had to find a way to parallelize it to make it scalable.",
+      tags: ["Distributed"],
+    },
   ];
   return (
     <Base>
