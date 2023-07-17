@@ -1,4 +1,4 @@
-import { Text, useColorModeValue } from "@chakra-ui/react";
+import { Heading, Text, useColorModeValue } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { useParams } from "react-router-dom";
@@ -34,6 +34,7 @@ const BlogPost = () => {
     // eslint-disable-next-line react/no-unstable-nested-components, react/prop-types
     h1: ({ ...props }) => <PageTitle>{props.children}</PageTitle>,
     h2: ({ ...props }) => <SubTitle>{props.children}</SubTitle>,
+    h6: ({ ...props }) => <Heading size={"sm"}>{props.children}</Heading>,
     code: CodeSnippet,
     a: LinkRenderer,
   };
