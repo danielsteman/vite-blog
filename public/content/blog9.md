@@ -38,6 +38,8 @@ With Celery, there are still some decisions that have to be made based on the us
 
 To run workloads on Celery workers, Python code needs to be wrapped in a `task`. The `task` is linked to a `Celery` instance that gets the entrypoint of the RabbitMQ cluster as an argument. In the example below, the `broker` URL depends on where the Celery workers and the message broker are running. When the complete application is deployed, this should be the internal Kubernetes DNS record of the RabbitMQ service.
 
+&nbsp;
+
 ```
 from celery import Celery
 
@@ -47,6 +49,12 @@ app = Celery('tasks', broker='pyamqp://guest@localhost//')
 def add(x, y):
     return x + y
 ```
+
+&nbsp;
+
+You can already run this example Celery application (saved as `tasks.py`) locally with a simple command `celery -A tasks worker`. This means that it is also not very complicated to wrap this application in a Docker container, as it just needs the workload dependencies (think of the workload as the business logic that needs to be performed), the Celery python package and the `RUN` command to fire up the worker.
+
+{Dockerfile example here}
 
 &nbsp;
 
