@@ -67,7 +67,7 @@ const Blog = () => {
       id: 9,
       title:
         "Parallelizing workloads with Celery and RabbitMQ on Kubernetes 🍃🐇☸️",
-      date: "TBD",
+      date: "Wed 19 Jul, 2023",
       text: "Recently I have been working on a project with a lot of IO, as I had to process a vast amount of documents in a relatively short time. After writing the application that contained the business logic, I had to find a way to parallelize it to make it scalable.",
       tags: ["Distributed"],
     },
