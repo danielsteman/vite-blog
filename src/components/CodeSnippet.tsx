@@ -7,8 +7,7 @@ const CodeSnippet = (props: any) => (
     height="fit-content"
     maxW="100%"
     overflow="auto"
-    display="inline-block"
-    line-height={0}
+    verticalAlign="middle"
   >
     {props.children}
   </Code>

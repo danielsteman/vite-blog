@@ -54,10 +54,30 @@ def add(x, y):
 
 You can already run this example Celery application (saved as `tasks.py`) locally with a simple command `celery -A tasks worker`. This means that it is also not very complicated to wrap this application in a Docker container, as it just needs the workload dependencies (think of the workload as the business logic that needs to be performed), the Celery python package and the `RUN` command to fire up the worker.
 
-{Dockerfile example here}
+&nbsp;
+
+```
+FROM python:3.10
+WORKDIR /app
+COPY ./requirements.txt /app/requirements.txt
+RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
+COPY src src
+WORKDIR src/celery
+CMD celery -A tasks worker --loglevel=INFO --concurrency=1
+```
 
 &nbsp;
 
-I left the results backend out of scope for the first iteration, but according to the Celery docs, Redis is a popular choice to complement RabbitMQ. If something more persistent is required, a Postgres database is also an option. I also left monitoring out of scope, but [Flower](https://flower.readthedocs.io/en/latest/features.html) 🌸 seems like an amazing tool to monitor Celery events in real-time.
+The worker image can be deployed as a replicaset on Kubernetes, where the number of replicas can scale when the workload increases. This means that both the broker nodes and worker nodes are horizontal scalable, as displayed in the high-level diagram showed below.
 
 &nbsp;
+
+![Diagram](../images/k8s_celery_scaling.svg)
+
+&nbsp;
+
+I left the results backend out of scope for the first iteration, but according to the Celery docs, [Redis](https://redis.io/) (which is also horizontal scalable) is a popular choice to complement RabbitMQ. If something more persistent is required, a Postgres database is also an option. I also left monitoring out of scope, but [Flower 🌸](https://flower.readthedocs.io/en/latest/features.html) seems like an amazing tool to monitor Celery events in real-time. Monitoring is still possible through the [RabbitMQ management API](https://www.rabbitmq.com/management.html) which is exposed on port `15672` by default. In fact, Flower consumes data from the management API to show information about the workers.
+
+&nbsp;
+
+This basic setup was sufficient to get a feeling of its scaling potential and serves as a good starting point for further iterations. In a next post I'll write about other scaling issues, which are always there 😉, and how I've overcome them.
