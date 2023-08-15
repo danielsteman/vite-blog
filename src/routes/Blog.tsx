@@ -71,6 +71,13 @@ const Blog = () => {
       text: "Recently I have been working on a project with a lot of IO, as I had to process a vast amount of documents in a relatively short time. After writing the application that contained the business logic, I had to find a way to parallelize it to make it scalable.",
       tags: ["Distributed"],
     },
+    {
+      id: 10,
+      title: "My default pre-commit hooks for Python projects 🪝🐍",
+      date: "Tue 15 Aug, 2023",
+      text: "My goal is to automate as much as possible in my workflow, to decrease cognitive overhead and leave more headspace for actual work.",
+      tags: ["Workflow"],
+    },
   ];
   return (
     <Base>
