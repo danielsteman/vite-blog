@@ -2,7 +2,7 @@
 
 &nbsp;
 
-*Wed 24 Oct, 2022*
+_Wed 24 Oct, 2022_
 
 &nbsp;
 
