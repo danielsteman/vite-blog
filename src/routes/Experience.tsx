@@ -9,6 +9,27 @@ const Experience = () => (
     <PageTitle>Professional</PageTitle>
     <Box py={4} mb={4}>
       <Heading size="lg" fontWeight={400}>
+        Data Engineer
+      </Heading>
+      <Link href="https://www.bridgefund.nl/" isExternal w="fit-content">
+        <HStack>
+          <Heading size="md" fontWeight={700} py={2}>
+            Bridgefund
+          </Heading>
+          <ExternalLinkIcon mx="2px" />
+        </HStack>
+      </Link>
+      <Heading size="sm" fontWeight={700} py={2}>
+        Oct 2023 - Present
+      </Heading>
+      <Text>
+        Setting up a Data Lakehouse using Databricks. In this role I'm an
+        advocate of CI/CD best practices (Gitlab pipelines) and resources
+        provisioning using infrastructure-as-code (Terraform).
+      </Text>
+    </Box>
+    <Box py={4} mb={4}>
+      <Heading size="lg" fontWeight={400}>
         Data and Software Engineer
       </Heading>
       <Link href="https://www.asr.nl/" isExternal w="fit-content">
@@ -20,7 +41,7 @@ const Experience = () => (
         </HStack>
       </Link>
       <Heading size="sm" fontWeight={700} py={2}>
-        Sep 2021 - Present
+        Sep 2021 - Sep 2023
       </Heading>
       <Text>
         Scaling data science by designing, testing and deploying containerized
