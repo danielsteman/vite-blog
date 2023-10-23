@@ -1,19 +1,21 @@
-import * as React from 'react';
+import * as React from "react";
 import {
   chakra,
   keyframes,
   ImageProps,
   usePrefersReducedMotion,
   Box,
-} from '@chakra-ui/react';
-import logo from '../assets/memoji.png';
+} from "@chakra-ui/react";
+import logo from "../assets/memoji.png";
 
 const Logo = (props: ImageProps) => {
   const [rotateClockwise, setRotateClockwise] = React.useState(false);
   const [position, setPosition] = React.useState(0);
 
   const ref = React.useRef<HTMLImageElement>(null);
-  const computedStyle = ref.current ? window.getComputedStyle(ref.current) : undefined;
+  const computedStyle = ref.current
+    ? window.getComputedStyle(ref.current)
+    : undefined;
 
   const spin = keyframes`
   from { transform: rotate(${rotateClockwise ? position : 360}deg); }
@@ -29,9 +31,11 @@ const Logo = (props: ImageProps) => {
     <Box
       onClick={() => {
         const tf = computedStyle?.transform;
-        const sin = tf?.split(', ')[1];
+        const sin = tf?.split(", ")[1];
         if (sin) {
-          const degrees = Math.round(Math.asin(parseFloat(sin)) * (180 / Math.PI));
+          const degrees = Math.round(
+            Math.asin(parseFloat(sin)) * (180 / Math.PI)
+          );
           setPosition(degrees);
         }
         setRotateClockwise(!rotateClockwise);
