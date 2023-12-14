@@ -237,6 +237,8 @@ def generate_validation_jobs() -> None:
 
 Where the parent job is written at the start of the document and the child jobs are appended at the bottom. Each folder in the `bundles` folder is considered a bundle. This is an important detail because if this assumption is wrong, the generated pipeline will be wrong. Now that the tools to generate pipeline are here, the parent and child jobs are created and ran:
 
+&nbsp;
+
 ```yaml
 generate-deploy-dev-jobs:
   stage: generate-deploy-dev-jobs
@@ -267,5 +269,7 @@ deploy-dev:bundles:
       artifacts: true
   when: on_success
 ```
+
+&nbsp;
 
 It seems like a hacky workaround, but it works like a charm. The child pipeline jobs are rendered on the right of the Gitlab CI pipeline graph and shows a failed child pipeline just like a regular failed pipeline task.

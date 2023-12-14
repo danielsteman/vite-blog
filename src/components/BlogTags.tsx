@@ -19,6 +19,7 @@ const BlogTags: React.FC<Props> = ({ tags }) => {
     Hardware: "purple",
     Distributed: "yellow",
     Workflow: "pink",
+    "Data Engineering": "gray",
   };
   return (
     <HStack>
