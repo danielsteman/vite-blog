@@ -149,3 +149,123 @@ deploy:prod:
 &nbsp;
 
 To prevent duplication, initializing a Python environment with the required dependencies and downloading and authenticating the Databricks CLI have been abstracted in jobs that can be included in other jobs through the `extends:` key. The pipeline contains two deployment steps; one for development and one for production. Only one runs depending on the corresponding `rules`.
+
+&nbsp;
+
+Things get a little bit more challenging when you have multiple DABs in one repo. I faced a repo with seven DABs that I wanted to deploy in a CI pipeline, but I also wanted to prevent code duplication. To solve this issue I wrote a `PipelineWriter`, a Python module that can be imported and called in downstream CI pipelines. The module contains a couple of functions that parameterize CI pipeline snippets by using multi-line F-strings. For example, to dynamically render a DAB validation job, I'd use these functions:
+
+&nbsp;
+
+```py
+class PipelineWriter:
+    @staticmethod
+    def deployment_parent_job_template(target: Environment) -> str:
+        parent_job_template = f"""
+workflow:
+  rules:
+    - when: always
+
+stages:
+  - auth
+  - deploy-bundles-{target}
+.install_databricks_cli:
+  before_script:
+    - curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh
+
+auth:
+  stage: auth
+  extends: .install_databricks_cli
+  script:
+    - |
+      cat <<EOT >> $CI_PROJECT_DIR/.databrickscfg
+      [DEFAULT]
+      host             = https://dbc-123456.cloud.databricks.com/
+      token            = $DATABRICKS_TOKEN_DEV
+      jobs-api-version = 2.0
+
+      [PROD]
+      host             = https://dbc-123456.cloud.databricks.com/
+      token            = $DATABRICKS_TOKEN_PROD
+      jobs-api-version = 2.0
+      EOT
+  artifacts:
+    paths:
+      - $CI_PROJECT_DIR/.databrickscfg
+"""
+        return parent_job_template
+
+    @staticmethod
+    def deployment_child_pipeline_job_template(name: str, target: Environment) -> str:
+        pretty_name = stringcase.spinalcase(name)
+        child_pipeline_job_template = f"""
+deploy-{pretty_name}-bundle-{target}:
+  extends: .install_databricks_cli
+  stage: deploy-bundles-{target}
+  variables:
+     BUNDLE: {name}
+  script:
+    - echo "Validate $BUNDLE"
+    - cd bundles/$BUNDLE
+    - databricks bundle deploy -t {target}
+    - echo "Validated $BUNDLE"
+  dependencies:
+    - auth
+"""
+        return child_pipeline_job_template
+```
+
+&nbsp;
+
+The returned string is then written to a new `.yml` file like so:
+
+&nbsp;
+
+```py
+def get_bundles() -> List[str]:
+    bundles_path = "bundles"
+    bundles = [path for path in os.listdir(bundles_path) if os.path.isdir(f"{bundles_path}/{path}")]
+    return bundles
+
+def generate_validation_jobs() -> None:
+    with open("validation-jobs.yml", "w+") as f:
+        f.write(PipelineWriter.validation_parent_job_template())
+        for bundle in get_bundles():
+            f.write(PipelineWriter.validation_child_pipeline_job_template(bundle))
+```
+
+&nbsp;
+
+Where the parent job is written at the start of the document and the child jobs are appended at the bottom. Each folder in the `bundles` folder is considered a bundle. This is an important detail because if this assumption is wrong, the generated pipeline will be wrong. Now that the tools to generate pipeline are here, the parent and child jobs are created and ran:
+
+```yaml
+generate-deploy-dev-jobs:
+  stage: generate-deploy-dev-jobs
+  extends: .install_python_dependencies
+  image: python:3.10
+  script:
+    - |
+      cat <<EOT >> $CI_PROJECT_DIR/generate_deploy_dev_jobs.py
+      from pipelinewriter.generate import generate_deployment_jobs
+      generate_deployment_jobs("dev")
+      EOT
+    - python generate_deploy_dev_jobs.py
+  artifacts:
+    paths:
+      - deploy-dev-jobs.yml
+  allow_failure: false
+  when: on_success
+
+deploy-dev:bundles:
+  stage: deploy-dev
+  trigger:
+    include:
+      - artifact: deploy-dev-jobs.yml
+        job: generate-deploy-dev-jobs
+    strategy: depend
+  needs:
+    - job: generate-deploy-dev-jobs
+      artifacts: true
+  when: on_success
+```
+
+It seems like a hacky workaround, but it works like a charm. The child pipeline jobs are rendered on the right of the Gitlab CI pipeline graph and shows a failed child pipeline just like a regular failed pipeline task.
