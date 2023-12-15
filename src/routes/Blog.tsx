@@ -81,7 +81,7 @@ const Blog = () => {
     {
       id: 11,
       title: "Deploying Databricks asset bundles using Gitlab CI 🧱",
-      date: "Tue 14 Dec, 2023",
+      date: "Tue 15 Dec, 2023",
       text: "Databricks asset bundles (DAB) is a thin wrapper around Terraform that allows you to bundle pipelines (delta live tables), workflows, machine learning (ML) endpoints, ML experiments and ML model. Essentially, it's Databricks infrastructure-as-code (IaC) solution.",
       tags: ["Data Engineering", "Machine Learning"],
     },
